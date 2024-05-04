@@ -1,12 +1,13 @@
 module github.com/nofendian17/openota/apigw
 
-go 1.22
+go 1.22.2
 
 require (
 	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/go-playground/validator/v10 v10.19.0
 	github.com/go-redis/redismock/v9 v9.2.0
 	github.com/google/uuid v1.6.0
+	github.com/nofendian17/gopkg v0.0.0-20240504183042-f743ff1bd600
 	github.com/redis/go-redis/v9 v9.5.1
 	github.com/rs/cors v1.10.1
 	github.com/shirou/gopsutil/v3 v3.24.3

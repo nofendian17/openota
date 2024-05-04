@@ -1,11 +1,11 @@
 package container
 
 import (
+	"github.com/nofendian17/gopkg/logger"
 	"github.com/nofendian17/openota/apigw/internal/config"
 	"github.com/nofendian17/openota/apigw/internal/infra/cache"
 	"github.com/nofendian17/openota/apigw/internal/infra/database"
 	"github.com/nofendian17/openota/apigw/internal/usecase"
-	"github.com/nofendian17/openota/gopkg/logger"
 )
 
 type Container struct {

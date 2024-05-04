@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/nofendian17/gopkg/logger"
 	"github.com/nofendian17/openota/apigw/internal/container"
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler"
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/middleware"
-	"github.com/nofendian17/openota/apigw/pkg/logger"
 )
 
 // Server defines the methods for an HTTP server.

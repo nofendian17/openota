@@ -3,10 +3,10 @@ package healthcheck
 import (
 	"net/http"
 
+	"github.com/nofendian17/gopkg/logger"
 	"github.com/nofendian17/openota/apigw/internal/config"
 	"github.com/nofendian17/openota/apigw/internal/container"
 	"github.com/nofendian17/openota/apigw/internal/usecase/healthcheck"
-	"github.com/nofendian17/openota/apigw/pkg/logger"
 )
 
 type Handler interface {

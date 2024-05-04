@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	l "github.com/nofendian17/openota/apigw/gopkg/logger"
+	l "github.com/nofendian17/gopkg/logger"
 	"github.com/nofendian17/openota/apigw/internal/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"

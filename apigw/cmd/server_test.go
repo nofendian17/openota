@@ -5,13 +5,13 @@ import (
 	"errors"
 	"testing"
 
+	"github.com/nofendian17/gopkg/logger"
 	"github.com/nofendian17/openota/apigw/internal/config"
 	"github.com/nofendian17/openota/apigw/internal/container"
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest"
 	mocks "github.com/nofendian17/openota/apigw/internal/mocks/delivery/rest"
 	mockCacheClient "github.com/nofendian17/openota/apigw/internal/mocks/infra/cache"
 	"github.com/nofendian17/openota/apigw/internal/usecase"
-	"github.com/nofendian17/openota/apigw/pkg/logger"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )

@@ -4,13 +4,13 @@ import (
 	"context"
 	"runtime"
 
+	"github.com/nofendian17/gopkg/logger"
 	"github.com/nofendian17/openota/apigw/cmd"
 	"github.com/nofendian17/openota/apigw/internal/config"
 	"github.com/nofendian17/openota/apigw/internal/container"
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest"
 	"github.com/nofendian17/openota/apigw/internal/infra/cache"
 	"github.com/nofendian17/openota/apigw/internal/infra/database"
-	"github.com/nofendian17/openota/apigw/pkg/logger"
 )
 
 func main() {

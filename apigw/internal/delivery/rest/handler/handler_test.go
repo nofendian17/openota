@@ -3,12 +3,12 @@ package handler
 import (
 	"testing"
 
+	"github.com/nofendian17/gopkg/logger"
 	"github.com/nofendian17/openota/apigw/internal/config"
 	"github.com/nofendian17/openota/apigw/internal/container"
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler/healthcheck"
 	mockCacheClient "github.com/nofendian17/openota/apigw/internal/mocks/infra/cache"
 	"github.com/nofendian17/openota/apigw/internal/usecase"
-	"github.com/nofendian17/openota/apigw/pkg/logger"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -3,7 +3,7 @@ package database
 import (
 	"testing"
 
-	"github.com/nofendian17/openota/apigw/pkg/logger"
+	"github.com/nofendian17/gopkg/logger"
 	"gorm.io/gorm"
 
 	"github.com/nofendian17/openota/apigw/internal/config"
