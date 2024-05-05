@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/go-playground/validator/v10"
-	"github.com/nofendian17/openota/apischedule/internal/delivery/rest/model/response"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"
 )
 
 type CustomValidator struct {

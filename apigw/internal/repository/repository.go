@@ -1,8 +1,8 @@
 package repository
 
 import (
-	cacheClient "github.com/nofendian17/openota/apischedule/internal/infra/cache"
-	cacheRepository "github.com/nofendian17/openota/apischedule/internal/repository/cache"
+	cacheClient "github.com/nofendian17/openota/apigw/internal/infra/cache"
+	cacheRepository "github.com/nofendian17/openota/apigw/internal/repository/cache"
 )
 
 // Repository represents a repository entity.

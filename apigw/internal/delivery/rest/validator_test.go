@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/nofendian17/openota/apischedule/internal/delivery/rest/model/response"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"
 )
 
 func TestCustomValidator_Validate(t *testing.T) {

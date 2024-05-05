@@ -5,8 +5,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/nofendian17/openota/apischedule/internal/delivery/rest/handler"
-	mockHealthChecHandler "github.com/nofendian17/openota/apischedule/internal/mocks/delivery/rest/handler/healthcheck"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler"
+	mockHealthChecHandler "github.com/nofendian17/openota/apigw/internal/mocks/delivery/rest/handler/healthcheck"
 	"github.com/stretchr/testify/mock"
 
 	"github.com/stretchr/testify/assert"

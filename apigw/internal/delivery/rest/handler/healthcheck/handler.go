@@ -4,9 +4,9 @@ import (
 	"net/http"
 
 	"github.com/nofendian17/gopkg/logger"
-	"github.com/nofendian17/openota/apischedule/internal/config"
-	"github.com/nofendian17/openota/apischedule/internal/container"
-	"github.com/nofendian17/openota/apischedule/internal/usecase/healthcheck"
+	"github.com/nofendian17/openota/apigw/internal/config"
+	"github.com/nofendian17/openota/apigw/internal/container"
+	"github.com/nofendian17/openota/apigw/internal/usecase/healthcheck"
 )
 
 type Handler interface {

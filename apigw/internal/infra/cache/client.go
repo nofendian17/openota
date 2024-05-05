@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/nofendian17/openota/apischedule/internal/config"
+	"github.com/nofendian17/openota/apigw/internal/config"
 	"github.com/redis/go-redis/v9"
 )
 

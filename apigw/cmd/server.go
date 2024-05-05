@@ -7,8 +7,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/nofendian17/openota/apischedule/internal/container"
-	"github.com/nofendian17/openota/apischedule/internal/delivery/rest"
+	"github.com/nofendian17/openota/apigw/internal/container"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest"
 )
 
 // Server is responsible for starting and stopping the REST server.

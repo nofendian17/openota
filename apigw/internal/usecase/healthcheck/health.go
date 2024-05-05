@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/nofendian17/openota/apischedule/internal/delivery/rest/model/response"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"
 	"github.com/shirou/gopsutil/v3/cpu"
 	"github.com/shirou/gopsutil/v3/mem"
 )

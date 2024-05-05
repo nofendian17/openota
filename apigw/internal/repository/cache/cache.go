@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/nofendian17/openota/apischedule/internal/entity"
-	cacheClient "github.com/nofendian17/openota/apischedule/internal/infra/cache"
+	"github.com/nofendian17/openota/apigw/internal/entity"
+	cacheClient "github.com/nofendian17/openota/apigw/internal/infra/cache"
 )
 
 type Repository interface {

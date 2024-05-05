@@ -8,9 +8,9 @@ import (
 	"time"
 
 	"github.com/nofendian17/gopkg/logger"
-	"github.com/nofendian17/openota/apischedule/internal/container"
-	"github.com/nofendian17/openota/apischedule/internal/delivery/rest/handler"
-	"github.com/nofendian17/openota/apischedule/internal/delivery/rest/middleware"
+	"github.com/nofendian17/openota/apigw/internal/container"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/middleware"
 )
 
 // Server defines the methods for an HTTP server.

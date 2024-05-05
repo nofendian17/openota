@@ -3,7 +3,7 @@ package healthcheck
 import (
 	"net/http"
 
-	"github.com/nofendian17/openota/apischedule/internal/delivery/rest/model/response"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"
 )
 
 func (h *handler) Health() http.HandlerFunc {

@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	l "github.com/nofendian17/gopkg/logger"
-	"github.com/nofendian17/openota/apischedule/internal/config"
+	"github.com/nofendian17/openota/apigw/internal/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"

@@ -7,11 +7,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/nofendian17/openota/apischedule/internal/config"
-	"github.com/nofendian17/openota/apischedule/internal/delivery/rest/model/response"
-	"github.com/nofendian17/openota/apischedule/internal/infra/database"
-	mockCacheClient "github.com/nofendian17/openota/apischedule/internal/mocks/infra/cache"
-	mockDB "github.com/nofendian17/openota/apischedule/internal/mocks/infra/database"
+	"github.com/nofendian17/openota/apigw/internal/config"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"
+	"github.com/nofendian17/openota/apigw/internal/infra/database"
+	mockCacheClient "github.com/nofendian17/openota/apigw/internal/mocks/infra/cache"
+	mockDB "github.com/nofendian17/openota/apigw/internal/mocks/infra/database"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )

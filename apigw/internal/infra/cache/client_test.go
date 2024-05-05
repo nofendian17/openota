@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/go-redis/redismock/v9"
-	"github.com/nofendian17/openota/apischedule/internal/config"
+	"github.com/nofendian17/openota/apigw/internal/config"
 	"github.com/stretchr/testify/assert"
 )
 

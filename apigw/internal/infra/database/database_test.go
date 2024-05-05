@@ -7,8 +7,8 @@ import (
 	"github.com/nofendian17/gopkg/logger"
 	"gorm.io/gorm"
 
-	"github.com/nofendian17/openota/apischedule/internal/config"
-	mocks "github.com/nofendian17/openota/apischedule/internal/mocks/infra/database"
+	"github.com/nofendian17/openota/apigw/internal/config"
+	mocks "github.com/nofendian17/openota/apigw/internal/mocks/infra/database"
 	"github.com/stretchr/testify/assert"
 )
 

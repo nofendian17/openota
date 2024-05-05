@@ -4,9 +4,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/nofendian17/openota/apischedule/internal/config"
-	"github.com/nofendian17/openota/apischedule/internal/infra/cache"
-	cacheRepository "github.com/nofendian17/openota/apischedule/internal/repository/cache"
+	"github.com/nofendian17/openota/apigw/internal/config"
+	"github.com/nofendian17/openota/apigw/internal/infra/cache"
+	cacheRepository "github.com/nofendian17/openota/apigw/internal/repository/cache"
 )
 
 func TestNew(t *testing.T) {

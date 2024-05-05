@@ -5,8 +5,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/nofendian17/openota/apischedule/internal/config"
-	mockUsecase "github.com/nofendian17/openota/apischedule/internal/mocks/usecase/healthcheck"
+	"github.com/nofendian17/openota/apigw/internal/config"
+	mockUsecase "github.com/nofendian17/openota/apigw/internal/mocks/usecase/healthcheck"
 	"github.com/stretchr/testify/assert"
 )
 

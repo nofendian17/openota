@@ -1,4 +1,4 @@
-module github.com/nofendian17/openota/apischedule
+module github.com/nofendian17/openota/apigw
 
 go 1.22.2
 

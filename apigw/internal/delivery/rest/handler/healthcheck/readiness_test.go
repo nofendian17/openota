@@ -6,10 +6,10 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/nofendian17/openota/apischedule/internal/delivery/rest/model/response"
-	mockUsecase "github.com/nofendian17/openota/apischedule/internal/mocks/usecase/healthcheck"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"
+	mockUsecase "github.com/nofendian17/openota/apigw/internal/mocks/usecase/healthcheck"
 
-	"github.com/nofendian17/openota/apischedule/internal/config"
+	"github.com/nofendian17/openota/apigw/internal/config"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )

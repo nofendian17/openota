@@ -5,7 +5,7 @@ package mocks
 import (
 	context "context"
 
-	entity "github.com/nofendian17/openota/apischedule/internal/entity"
+	entity "github.com/nofendian17/openota/apigw/internal/entity"
 	mock "github.com/stretchr/testify/mock"
 
 	time "time"

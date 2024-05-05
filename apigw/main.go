@@ -5,12 +5,12 @@ import (
 	"runtime"
 
 	"github.com/nofendian17/gopkg/logger"
-	"github.com/nofendian17/openota/apischedule/cmd"
-	"github.com/nofendian17/openota/apischedule/internal/config"
-	"github.com/nofendian17/openota/apischedule/internal/container"
-	"github.com/nofendian17/openota/apischedule/internal/delivery/rest"
-	"github.com/nofendian17/openota/apischedule/internal/infra/cache"
-	"github.com/nofendian17/openota/apischedule/internal/infra/database"
+	"github.com/nofendian17/openota/apigw/cmd"
+	"github.com/nofendian17/openota/apigw/internal/config"
+	"github.com/nofendian17/openota/apigw/internal/container"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest"
+	"github.com/nofendian17/openota/apigw/internal/infra/cache"
+	"github.com/nofendian17/openota/apigw/internal/infra/database"
 )
 
 func main() {

@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"github.com/nofendian17/openota/apischedule/internal/container"
-	"github.com/nofendian17/openota/apischedule/internal/delivery/rest/handler/healthcheck"
+	"github.com/nofendian17/openota/apigw/internal/container"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler/healthcheck"
 )
 
 type Handler struct {
