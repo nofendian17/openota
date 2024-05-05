@@ -1,6 +1,7 @@
 package database
 
 import (
+	"database/sql"
 	"testing"
 
 	"github.com/nofendian17/gopkg/logger"
@@ -50,7 +51,11 @@ func TestNew(t *testing.T) {
 			if err != nil {
 				assert.FailNow(t, err.Error())
 			}
-			defer db.SqlDB.Close()
+			defer func(SqlDB *sql.DB) {
+				err := SqlDB.Close()
+				if err != nil {
+				}
+			}(db.SqlDB)
 
 			assert.IsType(t, &DB{}, db)
 		})
