@@ -2,9 +2,11 @@ package main
 
 import (
 	"context"
+	"github.com/nofendian17/openota/apigw/internal/entity"
 	"runtime"
 
 	"github.com/nofendian17/gopkg/logger"
+	"github.com/nofendian17/gopkg/validator"
 	"github.com/nofendian17/openota/apigw/cmd"
 	"github.com/nofendian17/openota/apigw/internal/config"
 	"github.com/nofendian17/openota/apigw/internal/container"
@@ -26,8 +28,22 @@ func main() {
 		Version: cfg.Application.Version,
 	})
 
+	// initialize validator
+	v := validator.NewValidator()
+
 	// Initialize db
 	db, err := database.New(cfg, l)
+	if err != nil {
+		panic(err)
+	}
+
+	// Do migration
+	err = db.GormDB.AutoMigrate(
+		entity.Country{},
+		entity.State{},
+		entity.City{},
+		entity.Airport{},
+	)
 	if err != nil {
 		panic(err)
 	}
@@ -39,7 +55,7 @@ func main() {
 	}
 
 	// Initialize container
-	cntr := container.New(cfg, db, c, l)
+	cntr := container.New(cfg, db, c, l, v)
 
 	// Initialize rest server
 	restServer := rest.New(cntr)

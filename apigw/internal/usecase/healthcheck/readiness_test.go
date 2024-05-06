@@ -4,11 +4,11 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response/health"
 	"testing"
 	"time"
 
 	"github.com/nofendian17/openota/apigw/internal/config"
-	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"
 	"github.com/nofendian17/openota/apigw/internal/infra/database"
 	mockCacheClient "github.com/nofendian17/openota/apigw/internal/mocks/infra/cache"
 	mockDB "github.com/nofendian17/openota/apigw/internal/mocks/infra/database"
@@ -27,7 +27,7 @@ func Test_useCase_Readiness(t *testing.T) {
 		args     args
 		cacheErr error
 		dbErr    error
-		want     *response.ReadinessResponse
+		want     *health.ReadinessResponse
 		wantErr  assert.ErrorAssertionFunc
 	}{
 		{
@@ -36,9 +36,9 @@ func Test_useCase_Readiness(t *testing.T) {
 				ctx: context.Background(),
 			},
 			cacheErr: nil,
-			want: &response.ReadinessResponse{
+			want: &health.ReadinessResponse{
 				Status: statusUP,
-				Checks: []response.Check{
+				Checks: []health.Check{
 					{
 						Name:   "mysql",
 						Status: statusUP,
@@ -57,9 +57,9 @@ func Test_useCase_Readiness(t *testing.T) {
 				ctx: context.Background(),
 			},
 			cacheErr: errors.New("error"),
-			want: &response.ReadinessResponse{
+			want: &health.ReadinessResponse{
 				Status: statusDown,
-				Checks: []response.Check{
+				Checks: []health.Check{
 					{
 						Name:   "mysql",
 						Status: statusUP,
@@ -80,9 +80,9 @@ func Test_useCase_Readiness(t *testing.T) {
 			},
 			dbErr:    errors.New("error"),
 			cacheErr: nil,
-			want: &response.ReadinessResponse{
+			want: &health.ReadinessResponse{
 				Status: statusDown,
-				Checks: []response.Check{
+				Checks: []health.Check{
 					{
 						Name:   "mysql",
 						Status: statusDown,

@@ -12,24 +12,19 @@ func (h *handler) Readiness() http.HandlerFunc {
 		res, err := h.useCase.Readiness(ctx)
 
 		var status int
+		var message string
 		var data interface{}
-		var errs []error
 
 		if err != nil {
 			status = http.StatusInternalServerError
-			errs = []error{err}
+			message = err.Error()
 		} else {
 			status = http.StatusOK
+			message = http.StatusText(status)
 			data = res
 		}
 
-		httpResponse := response.New(
-			status,
-			http.StatusText(status),
-			data,
-			0,
-			errs,
-		)
+		httpResponse := response.New(status, message, data, 0, nil)
 		httpResponse.Json(w, status)
 	}
 }

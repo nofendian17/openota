@@ -6,32 +6,47 @@ import (
 	"testing"
 
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler"
-	mockHealthChecHandler "github.com/nofendian17/openota/apigw/internal/mocks/delivery/rest/handler/healthcheck"
+	mockCountryHandler "github.com/nofendian17/openota/apigw/internal/mocks/delivery/rest/handler/country"
+	mockHealthCheckHandler "github.com/nofendian17/openota/apigw/internal/mocks/delivery/rest/handler/healthcheck"
 	"github.com/stretchr/testify/mock"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func TestServer_routes(t *testing.T) {
-	mockHandler := &mockHealthChecHandler.Handler{}
-	mockHandler.On("Health", mock.Anything).Return(func() http.HandlerFunc {
+	_mockHealthHandler := &mockHealthCheckHandler.Handler{}
+	_mockHealthHandler.On("Health", mock.Anything).Return(func() http.HandlerFunc {
 		return func(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusOK)
 		}
 	}).Once()
-	mockHandler.On("Readiness", mock.Anything).Return(func() http.HandlerFunc {
+	_mockHealthHandler.On("Readiness", mock.Anything).Return(func() http.HandlerFunc {
 		return func(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusOK)
 		}
 	})
-	mockHandler.On("Ping", mock.Anything).Return(func() http.HandlerFunc {
+	_mockHealthHandler.On("Ping", mock.Anything).Return(func() http.HandlerFunc {
 		return func(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusOK)
 		}
 	})
+
+	_mockCountryHandler := &mockCountryHandler.Handler{}
+	_mockCountryHandler.On("GetByID", mock.Anything).Return(func() http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusOK)
+		}
+	})
+	_mockCountryHandler.On("GetByCode", mock.Anything).Return(func() http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusOK)
+		}
+	})
+
 	// Create a new instance of handler.Handler
 	h := &handler.Handler{
-		Health: mockHandler,
+		Health:  _mockHealthHandler,
+		Country: _mockCountryHandler,
 	}
 
 	// You may need to replace this with a mock or real implementation

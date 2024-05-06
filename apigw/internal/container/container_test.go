@@ -1,6 +1,7 @@
 package container
 
 import (
+	"github.com/nofendian17/gopkg/validator"
 	"reflect"
 	"testing"
 
@@ -20,11 +21,14 @@ func TestNew(t *testing.T) {
 		Service: cfg.Application.Name,
 		Version: cfg.Application.Version,
 	})
+
+	v := validator.NewValidator()
 	type args struct {
 		cfg *config.Config
 		db  *database.DB
 		c   cache.Client
 		l   logger.Logger
+		v   *validator.CustomValidator
 	}
 	tests := []struct {
 		name string
@@ -38,16 +42,17 @@ func TestNew(t *testing.T) {
 				db:  nil,
 				c:   nil,
 				l:   l,
+				v:   v,
 			},
 			want: &Container{
 				Config:  cfg,
-				UseCase: usecase.New(cfg, nil, nil),
+				UseCase: usecase.New(cfg, l, nil, nil),
 			},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := New(tt.args.cfg, tt.args.db, tt.args.c, tt.args.l); !reflect.DeepEqual(got, tt.want) {
+			if got := New(tt.args.cfg, tt.args.db, tt.args.c, tt.args.l, tt.args.v); !reflect.DeepEqual(got, tt.want) {
 				assert.IsType(t, tt.want, got)
 			}
 		})

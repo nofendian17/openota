@@ -21,7 +21,7 @@ func TestNewHandler(t *testing.T) {
 	})
 
 	c := &mockCacheClient.Client{}
-	u := usecase.New(cfg, nil, c)
+	u := usecase.New(cfg, l, nil, c)
 
 	cntr := &container.Container{
 		Config:  cfg,

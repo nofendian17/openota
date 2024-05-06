@@ -1,6 +1,9 @@
 package usecase
 
 import (
+	"github.com/nofendian17/gopkg/logger"
+	countryRepository "github.com/nofendian17/openota/apigw/internal/repository/country"
+	"github.com/nofendian17/openota/apigw/internal/usecase/country"
 	"time"
 
 	"github.com/nofendian17/openota/apigw/internal/config"
@@ -10,13 +13,19 @@ import (
 )
 
 type UseCase struct {
-	Health healthcheck.UseCase
+	Health  healthcheck.UseCase
+	Country country.UseCase
 }
 
 // New creates a new instance of the UseCase struct, initializing it with the provided configuration and database.
-func New(cfg *config.Config, db *database.DB, cache cache.Client) *UseCase {
+func New(cfg *config.Config, logger logger.Logger, db *database.DB, cache cache.Client) *UseCase {
 	healthUseCase := healthcheck.New(time.Now(), cfg, db, cache)
+
+	countryRepo := countryRepository.New(db)
+	countryUseCase := country.New(logger, countryRepo)
+
 	return &UseCase{
-		Health: healthUseCase,
+		Health:  healthUseCase,
+		Country: countryUseCase,
 	}
 }

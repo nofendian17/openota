@@ -4,9 +4,10 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-
 	l "github.com/nofendian17/gopkg/logger"
 	"github.com/nofendian17/openota/apigw/internal/config"
+	slogGorm "github.com/orandin/slog-gorm"
+	"github.com/sagikazarmark/slog-shim"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
@@ -36,8 +37,15 @@ func New(cfg *config.Config, l l.Logger) (*DB, error) {
 	}
 	l.Info(ctx, fmt.Sprintf("Connecting to database %s with driver %s", cfg.Database.Database, cfg.Database.Driver), nil)
 
+	customLogger := slog.Default()
+
+	gormLogger := slogGorm.New(
+		slogGorm.WithHandler(customLogger.Handler()), // since v1.3.0
+		slogGorm.WithTraceAll(),                      // trace all messages
+	)
+	gormLogger.LogMode(debugMode)
 	gormDB, err := gormOpen(dialect, &gorm.Config{
-		Logger: logger.Default.LogMode(debugMode),
+		Logger: gormLogger,
 	})
 	if err != nil {
 		l.Error(ctx, "Failed to connect to database", err)

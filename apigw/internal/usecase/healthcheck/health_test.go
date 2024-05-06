@@ -2,11 +2,11 @@ package healthcheck
 
 import (
 	"context"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response/health"
 	"testing"
 	"time"
 
 	"github.com/nofendian17/openota/apigw/internal/config"
-	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"
 	"github.com/nofendian17/openota/apigw/internal/infra/cache"
 	"github.com/nofendian17/openota/apigw/internal/infra/database"
 	mockCacheClient "github.com/nofendian17/openota/apigw/internal/mocks/infra/cache"
@@ -31,7 +31,7 @@ func Test_useCase_Health(t *testing.T) {
 		name    string
 		fields  fields
 		args    args
-		want    *response.HealthResponse
+		want    *health.HealthResponse
 		wantErr bool
 	}{
 		{
@@ -45,7 +45,7 @@ func Test_useCase_Health(t *testing.T) {
 			args: args{
 				ctx: context.Background(),
 			},
-			want:    &response.HealthResponse{},
+			want:    &health.HealthResponse{},
 			wantErr: false,
 		},
 	}

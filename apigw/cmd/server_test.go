@@ -53,7 +53,7 @@ func Test_server_StartRestServer(t *testing.T) {
 	})
 
 	c := &mockCacheClient.Client{}
-	u := usecase.New(cfg, nil, c)
+	u := usecase.New(cfg, l, nil, c)
 
 	// Create a container with necessary dependencies
 	cntr := &container.Container{

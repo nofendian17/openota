@@ -1,11 +1,13 @@
 package handler
 
 import (
+	"github.com/nofendian17/gopkg/validator"
 	"testing"
 
 	"github.com/nofendian17/gopkg/logger"
 	"github.com/nofendian17/openota/apigw/internal/config"
 	"github.com/nofendian17/openota/apigw/internal/container"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler/country"
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler/healthcheck"
 	mockCacheClient "github.com/nofendian17/openota/apigw/internal/mocks/infra/cache"
 	"github.com/nofendian17/openota/apigw/internal/usecase"
@@ -21,12 +23,14 @@ func TestNew(t *testing.T) {
 		Version: cfg.Application.Version,
 	})
 	c := &mockCacheClient.Client{}
-	u := usecase.New(cfg, nil, c)
+	u := usecase.New(cfg, l, nil, c)
+	v := validator.NewValidator()
 
 	cntr := &container.Container{
-		Config:  cfg,
-		UseCase: u,
-		Logger:  l,
+		Config:    cfg,
+		UseCase:   u,
+		Logger:    l,
+		Validator: v,
 	}
 
 	type args struct {
@@ -43,7 +47,8 @@ func TestNew(t *testing.T) {
 				c: cntr,
 			},
 			want: &Handler{
-				Health: healthcheck.New(cntr),
+				Health:  healthcheck.New(cntr),
+				Country: country.New(cntr),
 			},
 		},
 	}

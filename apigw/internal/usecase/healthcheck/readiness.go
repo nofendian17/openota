@@ -2,8 +2,7 @@ package healthcheck
 
 import (
 	"context"
-
-	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response/health"
 )
 
 const (
@@ -12,16 +11,16 @@ const (
 )
 
 // Readiness checks the readiness of the application by verifying different components like database and Redis connections.
-func (u *useCase) Readiness(ctx context.Context) (*response.ReadinessResponse, error) {
-	ready := response.ReadinessResponse{
+func (u *useCase) Readiness(ctx context.Context) (*health.ReadinessResponse, error) {
+	ready := health.ReadinessResponse{
 		Status: statusUP,
-		Checks: []response.Check{},
+		Checks: []health.Check{},
 	}
 
-	var checks []response.Check
+	var checks []health.Check
 
 	// Check database connection
-	checkDB := response.Check{
+	checkDB := health.Check{
 		Name:   u.db.GormDB.Name(),
 		Status: statusUP,
 	}
@@ -34,7 +33,7 @@ func (u *useCase) Readiness(ctx context.Context) (*response.ReadinessResponse, e
 	checks = append(checks, checkDB)
 
 	// Check Redis connection
-	checkRedis := response.Check{
+	checkRedis := health.Check{
 		Name:   "Redis",
 		Status: statusUP,
 	}

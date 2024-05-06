@@ -2,17 +2,17 @@ package healthcheck
 
 import (
 	"context"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response/health"
 	"time"
 
 	"github.com/nofendian17/openota/apigw/internal/config"
-	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"
 	cacheClient "github.com/nofendian17/openota/apigw/internal/infra/cache"
 	"github.com/nofendian17/openota/apigw/internal/infra/database"
 )
 
 type UseCase interface {
-	Health(ctx context.Context) (*response.HealthResponse, error)
-	Readiness(ctx context.Context) (*response.ReadinessResponse, error)
+	Health(ctx context.Context) (*health.HealthResponse, error)
+	Readiness(ctx context.Context) (*health.ReadinessResponse, error)
 }
 
 type useCase struct {

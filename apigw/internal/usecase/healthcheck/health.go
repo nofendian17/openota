@@ -3,9 +3,9 @@ package healthcheck
 import (
 	"context"
 	"fmt"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response/health"
 	"time"
 
-	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"
 	"github.com/shirou/gopsutil/v3/cpu"
 	"github.com/shirou/gopsutil/v3/mem"
 )
@@ -14,7 +14,7 @@ import (
 //
 // Context ctx is used to carry deadlines, cancellation signals, and other request-scoped values.
 // Returns a pointer to response.HealthResponse and an error.
-func (u *useCase) Health(ctx context.Context) (*response.HealthResponse, error) {
+func (u *useCase) Health(ctx context.Context) (*health.HealthResponse, error) {
 
 	c, err := cpu.PercentWithContext(ctx, 0, false)
 	if err != nil {
@@ -26,7 +26,7 @@ func (u *useCase) Health(ctx context.Context) (*response.HealthResponse, error) 
 		return nil, err
 	}
 
-	return &response.HealthResponse{
+	return &health.HealthResponse{
 		Version: u.config.Application.Version,
 		Uptime:  time.Since(u.startAt).String(),
 		CPU:     fmt.Sprintf("%.2f%%", c[0]),

@@ -2,11 +2,11 @@ package healthcheck
 
 import (
 	"errors"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response/health"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 
-	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"
 	mockUsecase "github.com/nofendian17/openota/apigw/internal/mocks/usecase/healthcheck"
 
 	"github.com/nofendian17/openota/apigw/internal/config"
@@ -23,7 +23,7 @@ func TestHandler_Health(t *testing.T) {
 		{
 			name: "should return 200",
 			response: []interface{}{
-				&response.HealthResponse{
+				&health.HealthResponse{
 					Version: "1.0",
 					Uptime:  "xxx",
 					CPU:     "xxx",
