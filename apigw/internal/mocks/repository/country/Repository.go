@@ -16,7 +16,7 @@ type Repository struct {
 }
 
 // Create provides a mock function with given fields: ctx, _a1
-func (_m *Repository) Create(ctx context.Context, _a1 *entity.Country) error {
+func (_m *Repository) Create(ctx context.Context, _a1 entity.Country) error {
 	ret := _m.Called(ctx, _a1)
 
 	if len(ret) == 0 {
@@ -24,7 +24,7 @@ func (_m *Repository) Create(ctx context.Context, _a1 *entity.Country) error {
 	}
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func(context.Context, *entity.Country) error); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, entity.Country) error); ok {
 		r0 = rf(ctx, _a1)
 	} else {
 		r0 = ret.Error(0)

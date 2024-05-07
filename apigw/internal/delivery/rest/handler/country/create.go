@@ -1,51 +1,50 @@
 package country
 
 import (
-	"errors"
+	"encoding/json"
 	"net/http"
 
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/request/country"
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"
-	"gorm.io/gorm"
 )
 
-func (h *handler) GetByID() http.HandlerFunc {
+func (h *handler) Create() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		ctx := r.Context()
-		ID := r.PathValue("countryID")
+
+		// Decode request
+		decoder := json.NewDecoder(r.Body)
+		var requestBody country.Create
+		if err := decoder.Decode(&requestBody); err != nil {
+			httpResponse := response.New(http.StatusBadRequest, http.StatusText(http.StatusBadRequest), nil, 0, err)
+			httpResponse.Json(w, http.StatusBadRequest)
+			return
+		}
 
 		// Validate request
-		if err := h.validator.Validate(&country.GetByID{ID: ID}); err != nil {
+		if err := h.validator.Validate(&requestBody); err != nil {
 			httpResponse := response.New(http.StatusUnprocessableEntity, http.StatusText(http.StatusUnprocessableEntity), nil, 0, err)
 			httpResponse.Json(w, http.StatusUnprocessableEntity)
 			return
 		}
 
-		// Get country by ID
-		res, err := h.useCase.GetByID(ctx, ID)
+		err := h.useCase.Create(ctx, requestBody)
 
 		var (
 			// Handle response
 			status  int
 			message string
-			data    interface{}
 		)
 
 		if err != nil {
-			if errors.Is(err, gorm.ErrRecordNotFound) {
-				status = http.StatusNotFound
-				message = err.Error()
-			} else {
-				status = http.StatusInternalServerError
-				message = err.Error()
-			}
+			status = http.StatusInternalServerError
+			message = err.Error()
 		} else {
-			status = http.StatusOK
+			status = http.StatusCreated
 			message = http.StatusText(status)
-			data = res
 		}
 
-		httpResponse := response.New(status, message, data, 0, nil)
+		httpResponse := response.New(status, message, nil, 0, nil)
 		httpResponse.Json(w, status)
 		return
 	}

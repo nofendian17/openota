@@ -12,6 +12,9 @@ import (
 type Handler interface {
 	GetByID() http.HandlerFunc
 	GetByCode() http.HandlerFunc
+	GetAll() http.HandlerFunc
+
+	Create() http.HandlerFunc
 }
 
 type handler struct {

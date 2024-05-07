@@ -42,6 +42,17 @@ func TestServer_routes(t *testing.T) {
 			w.WriteHeader(http.StatusOK)
 		}
 	})
+	_mockCountryHandler.On("GetAll", mock.Anything).Return(func() http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusOK)
+		}
+	})
+
+	_mockCountryHandler.On("Create", mock.Anything, mock.Anything).Return(func() http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusOK)
+		}
+	})
 
 	// Create a new instance of handler.Handler
 	h := &handler.Handler{

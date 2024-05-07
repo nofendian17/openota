@@ -13,6 +13,46 @@ type Handler struct {
 	mock.Mock
 }
 
+// Create provides a mock function with given fields:
+func (_m *Handler) Create() http.HandlerFunc {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Create")
+	}
+
+	var r0 http.HandlerFunc
+	if rf, ok := ret.Get(0).(func() http.HandlerFunc); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(http.HandlerFunc)
+		}
+	}
+
+	return r0
+}
+
+// GetAll provides a mock function with given fields:
+func (_m *Handler) GetAll() http.HandlerFunc {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAll")
+	}
+
+	var r0 http.HandlerFunc
+	if rf, ok := ret.Get(0).(func() http.HandlerFunc); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(http.HandlerFunc)
+		}
+	}
+
+	return r0
+}
+
 // GetByCode provides a mock function with given fields:
 func (_m *Handler) GetByCode() http.HandlerFunc {
 	ret := _m.Called()

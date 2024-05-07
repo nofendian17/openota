@@ -12,7 +12,7 @@ type Repository interface {
 	GetByCode(ctx context.Context, code string) (*entity.Country, error)
 	GetAll(ctx context.Context) ([]*entity.Country, error)
 
-	Create(ctx context.Context, country *entity.Country) error
+	Create(ctx context.Context, country entity.Country) error
 	Update(ctx context.Context, ID string, country entity.Country) error
 	Delete(ctx context.Context, ID string) error
 }
@@ -52,8 +52,8 @@ func (r *repository) GetAll(ctx context.Context) ([]*entity.Country, error) {
 	return countries, nil
 }
 
-func (r *repository) Create(ctx context.Context, country *entity.Country) error {
-	return r.db.GormDB.WithContext(ctx).Create(country).Error
+func (r *repository) Create(ctx context.Context, country entity.Country) error {
+	return r.db.GormDB.WithContext(ctx).Create(&country).Error
 }
 
 func (r *repository) Update(ctx context.Context, ID string, country entity.Country) error {

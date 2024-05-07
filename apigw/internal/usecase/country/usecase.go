@@ -3,13 +3,17 @@ package country
 import (
 	"context"
 	"github.com/nofendian17/gopkg/logger"
-	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response/country"
+	request "github.com/nofendian17/openota/apigw/internal/delivery/rest/model/request/country"
+	response "github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response/country"
 	countryRepository "github.com/nofendian17/openota/apigw/internal/repository/country"
 )
 
 type UseCase interface {
-	GetByID(ctx context.Context, ID string) (*country.Country, error)
-	GetByCode(ctx context.Context, Code string) (*country.Country, error)
+	GetByID(ctx context.Context, ID string) (*response.Country, error)
+	GetByCode(ctx context.Context, Code string) (*response.Country, error)
+	GetAll(ctx context.Context) ([]*response.Country, error)
+
+	Create(ctx context.Context, country request.Create) error
 }
 
 type useCase struct {

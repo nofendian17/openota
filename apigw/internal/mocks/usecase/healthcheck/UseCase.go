@@ -4,7 +4,8 @@ package mocks
 
 import (
 	context "context"
-	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response/health"
+
+	health "github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response/health"
 
 	mock "github.com/stretchr/testify/mock"
 )
