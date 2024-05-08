@@ -33,6 +33,26 @@ func (_m *Handler) Create() http.HandlerFunc {
 	return r0
 }
 
+// Delete provides a mock function with given fields:
+func (_m *Handler) Delete() http.HandlerFunc {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Delete")
+	}
+
+	var r0 http.HandlerFunc
+	if rf, ok := ret.Get(0).(func() http.HandlerFunc); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(http.HandlerFunc)
+		}
+	}
+
+	return r0
+}
+
 // GetAll provides a mock function with given fields:
 func (_m *Handler) GetAll() http.HandlerFunc {
 	ret := _m.Called()
@@ -79,6 +99,26 @@ func (_m *Handler) GetByID() http.HandlerFunc {
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetByID")
+	}
+
+	var r0 http.HandlerFunc
+	if rf, ok := ret.Get(0).(func() http.HandlerFunc); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(http.HandlerFunc)
+		}
+	}
+
+	return r0
+}
+
+// Update provides a mock function with given fields:
+func (_m *Handler) Update() http.HandlerFunc {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Update")
 	}
 
 	var r0 http.HandlerFunc

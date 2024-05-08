@@ -15,6 +15,8 @@ type Handler interface {
 	GetAll() http.HandlerFunc
 
 	Create() http.HandlerFunc
+	Update() http.HandlerFunc
+	Delete() http.HandlerFunc
 }
 
 type handler struct {

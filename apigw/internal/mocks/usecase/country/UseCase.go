@@ -34,6 +34,24 @@ func (_m *UseCase) Create(ctx context.Context, _a1 country.Create) error {
 	return r0
 }
 
+// Delete provides a mock function with given fields: ctx, ID
+func (_m *UseCase) Delete(ctx context.Context, ID string) error {
+	ret := _m.Called(ctx, ID)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Delete")
+	}
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(context.Context, string) error); ok {
+		r0 = rf(ctx, ID)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
+}
+
 // GetAll provides a mock function with given fields: ctx
 func (_m *UseCase) GetAll(ctx context.Context) ([]*responsecountry.Country, error) {
 	ret := _m.Called(ctx)
@@ -122,6 +140,24 @@ func (_m *UseCase) GetByID(ctx context.Context, ID string) (*responsecountry.Cou
 	}
 
 	return r0, r1
+}
+
+// Update provides a mock function with given fields: ctx, ID, _a2
+func (_m *UseCase) Update(ctx context.Context, ID string, _a2 country.Update) error {
+	ret := _m.Called(ctx, ID, _a2)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Update")
+	}
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(context.Context, string, country.Update) error); ok {
+		r0 = rf(ctx, ID, _a2)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
 }
 
 // NewUseCase creates a new instance of UseCase. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.

@@ -7,8 +7,8 @@ import (
 	"time"
 )
 
-func (u *useCase) Create(ctx context.Context, country request.Create) error {
-	err := u.countryRepository.Create(ctx, entity.Country{
+func (u *useCase) Update(ctx context.Context, ID string, country request.Update) error {
+	err := u.countryRepository.Update(ctx, ID, entity.Country{
 		Name:         country.Name,
 		Code:         country.Code,
 		PhoneCode:    country.PhoneCode,
@@ -17,7 +17,6 @@ func (u *useCase) Create(ctx context.Context, country request.Create) error {
 		Longitude:    country.Longitude,
 		CurrencyCode: country.CurrencyCode,
 		IsActive:     country.IsActive,
-		CreatedAt:    time.Now(),
 		UpdatedAt:    time.Now(),
 	})
 	if err != nil {

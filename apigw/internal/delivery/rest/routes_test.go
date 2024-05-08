@@ -50,6 +50,16 @@ func TestServer_routes(t *testing.T) {
 
 	_mockCountryHandler.On("Create", mock.Anything, mock.Anything).Return(func() http.HandlerFunc {
 		return func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusCreated)
+		}
+	})
+	_mockCountryHandler.On("Update", mock.Anything, mock.Anything).Return(func() http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusOK)
+		}
+	})
+	_mockCountryHandler.On("Delete", mock.Anything, mock.Anything).Return(func() http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusOK)
 		}
 	})

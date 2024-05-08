@@ -20,7 +20,7 @@ func (u *useCase) GetByCode(ctx context.Context, Code string) (*response.Country
 		Latitude:     result.Latitude,
 		Longitude:    result.Longitude,
 		CurrencyCode: result.CurrencyCode,
-		IsActive:     result.IsActive,
+		IsActive:     *result.IsActive,
 		Precedence:   result.Precedence,
 		CreatedAt:    result.CreatedAt,
 		UpdatedAt:    result.UpdatedAt,

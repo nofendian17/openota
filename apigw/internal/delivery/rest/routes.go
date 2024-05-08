@@ -9,5 +9,7 @@ func (s *server) routes() {
 	s.router.HandleFunc("GET /api/v1/country", s.handler.Country.GetAll())
 	s.router.HandleFunc("POST /api/v1/country", s.handler.Country.Create())
 	s.router.HandleFunc("GET /api/v1/country/{countryID}", s.handler.Country.GetByID())
+	s.router.HandleFunc("PUT /api/v1/country/{countryID}", s.handler.Country.Update())
+	s.router.HandleFunc("DELETE /api/v1/country/{countryID}", s.handler.Country.Delete())
 	s.router.HandleFunc("GET /api/v1/country/code/{countryCode}", s.handler.Country.GetByCode())
 }

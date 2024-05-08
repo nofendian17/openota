@@ -14,6 +14,8 @@ type UseCase interface {
 	GetAll(ctx context.Context) ([]*response.Country, error)
 
 	Create(ctx context.Context, country request.Create) error
+	Update(ctx context.Context, ID string, country request.Update) error
+	Delete(ctx context.Context, ID string) error
 }
 
 type useCase struct {
