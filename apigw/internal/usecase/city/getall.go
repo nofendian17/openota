@@ -16,6 +16,7 @@ func (u *useCase) GetAll(ctx context.Context) ([]*response.City, error) {
 		resp[i] = &response.City{
 			ID:         r.ID,
 			Name:       r.Name,
+			StateID:    r.StateID,
 			Latitude:   r.Latitude,
 			Longitude:  r.Longitude,
 			IsActive:   *r.IsActive,

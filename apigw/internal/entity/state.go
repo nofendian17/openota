@@ -11,7 +11,7 @@ type State struct {
 	ID         uuid.UUID `json:"id" gorm:"primary_key;type:char(36);not null"`
 	Name       string    `json:"name" gorm:"type:varchar(255);not null"`
 	CountryID  uuid.UUID `json:"country_id" gorm:"type:char(36);not null"`
-	Country    Country   `json:"country" gorm:"foreignKey:CountryID"`
+	Country    Country   `json:"country" gorm:"foreignKey:CountryID;constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
 	Cities     []City    `json:"cities" gorm:"foreignKey:StateID"`
 	Latitude   float64   `json:"latitude" gorm:"type:DOUBLE PRECISION;null"`
 	Longitude  float64   `json:"longitude" gorm:"type:DOUBLE PRECISION;null"`

@@ -15,6 +15,7 @@ func (u *useCase) GetByStateID(ctx context.Context, stateID string) ([]*response
 	for i, r := range result {
 		resp[i] = &response.City{
 			ID:         r.ID,
+			StateID:    r.StateID,
 			Name:       r.Name,
 			Latitude:   r.Latitude,
 			Longitude:  r.Longitude,

@@ -11,7 +11,7 @@ type Airport struct {
 	Code       string    `json:"code" gorm:"type:varchar(3);unique_index;not null"`
 	Name       string    `json:"name" gorm:"type:varchar(255);not null"`
 	CityID     uuid.UUID `json:"city_id" gorm:"type:char(36);not null"`
-	City       City      `json:"city" gorm:"references:ID"`
+	City       City      `json:"city" gorm:"foreignKey:CityID;constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
 	Latitude   float64   `json:"latitude" gorm:"type:DOUBLE PRECISION;null"`
 	Longitude  float64   `json:"longitude" gorm:"type:DOUBLE PRECISION;null"`
 	IsDomestic *bool     `json:"is_domestic" gorm:"type:boolean;default:false"`
