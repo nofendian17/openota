@@ -6,9 +6,8 @@ import (
 )
 
 type Country struct {
-	ID   uuid.UUID `json:"id"`
-	Name string    `json:"name"`
-	//States       []entity.State `json:"states"`
+	ID           uuid.UUID `json:"id"`
+	Name         string    `json:"name"`
 	Code         string    `json:"code"`
 	PhoneCode    string    `json:"phone_code" `
 	Capital      string    `json:"capital"`

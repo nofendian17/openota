@@ -1,4 +1,4 @@
-package country
+package city
 
 import (
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response"

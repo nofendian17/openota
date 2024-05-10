@@ -10,11 +10,10 @@ import (
 type Repository interface {
 	GetByID(ctx context.Context, ID string) (*entity.City, error)
 	GetByStateID(ctx context.Context, StateID string) ([]*entity.City, error)
-	GetByName(ctx context.Context, name string) (*entity.City, error)
 	GetAll(ctx context.Context) ([]*entity.City, error)
 
 	Create(ctx context.Context, city *entity.City) error
-	Update(ctx context.Context, ID string, city entity.City) error
+	Update(ctx context.Context, ID string, city *entity.City) error
 	Delete(ctx context.Context, ID string) error
 }
 
@@ -45,15 +44,6 @@ func (r *repository) GetByStateID(ctx context.Context, StateID string) ([]*entit
 	return cities, nil
 }
 
-func (r *repository) GetByName(ctx context.Context, name string) (*entity.City, error) {
-	var city entity.City
-	if err := r.db.GormDB.WithContext(ctx).First(&city, "name = ?", name).Error; err != nil {
-
-		return nil, err // Other errors
-	}
-	return &city, nil
-}
-
 func (r *repository) GetAll(ctx context.Context) ([]*entity.City, error) {
 	var cities []*entity.City
 	if err := r.db.GormDB.WithContext(ctx).Find(&cities).Error; err != nil {
@@ -66,8 +56,8 @@ func (r *repository) Create(ctx context.Context, city *entity.City) error {
 	return r.db.GormDB.WithContext(ctx).Create(city).Error
 }
 
-func (r *repository) Update(ctx context.Context, ID string, city entity.City) error {
-	return r.db.GormDB.WithContext(ctx).Model(&entity.City{}).Where("id = ?", ID).Updates(&city).Error
+func (r *repository) Update(ctx context.Context, ID string, city *entity.City) error {
+	return r.db.GormDB.WithContext(ctx).Model(&entity.City{}).Where("id = ?", ID).Updates(city).Error
 }
 
 func (r *repository) Delete(ctx context.Context, ID string) error {

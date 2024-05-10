@@ -28,7 +28,8 @@ type Update struct {
 	Latitude     float64 `json:"latitude" validate:"required"`
 	Longitude    float64 `json:"longitude" validate:"required"`
 	CurrencyCode string  `json:"currency" validate:"required,min=3,max=3"`
-	IsActive     *bool   `json:"is_active" validate:"required"`
+	IsActive     *bool   `json:"is_active" validate:"required,boolean"`
+	Precedence   int64   `json:"precedence" validate:"required,min=0"`
 }
 
 type Delete struct {

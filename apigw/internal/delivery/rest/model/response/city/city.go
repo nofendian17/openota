@@ -1,14 +1,14 @@
-package state
+package city
 
 import (
 	"github.com/google/uuid"
 	"time"
 )
 
-type State struct {
+type City struct {
 	ID         uuid.UUID `json:"id"`
+	StateID    uuid.UUID `json:"state_id"`
 	Name       string    `json:"name"`
-	CountryID  uuid.UUID `json:"country_id"`
 	Latitude   float64   `json:"latitude"`
 	Longitude  float64   `json:"longitude"`
 	IsActive   bool      `json:"is_active"`

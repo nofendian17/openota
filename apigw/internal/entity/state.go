@@ -15,7 +15,7 @@ type State struct {
 	Cities     []City    `json:"cities" gorm:"foreignKey:StateID"`
 	Latitude   float64   `json:"latitude" gorm:"type:DOUBLE PRECISION;null"`
 	Longitude  float64   `json:"longitude" gorm:"type:DOUBLE PRECISION;null"`
-	IsActive   bool      `json:"is_active" gorm:"type:boolean;default:true"`
+	IsActive   *bool     `json:"is_active" gorm:"type:boolean;default:true"`
 	Precedence int64     `json:"precedence" gorm:"type:integer;default:0"`
 	CreatedAt  time.Time `json:"created_at" gorm:"type:timestamp;not null"`
 	UpdatedAt  time.Time `json:"updated_at" gorm:"type:timestamp;not null"`

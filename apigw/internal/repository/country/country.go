@@ -12,8 +12,8 @@ type Repository interface {
 	GetByCode(ctx context.Context, code string) (*entity.Country, error)
 	GetAll(ctx context.Context) ([]*entity.Country, error)
 
-	Create(ctx context.Context, country entity.Country) error
-	Update(ctx context.Context, ID string, country entity.Country) error
+	Create(ctx context.Context, country *entity.Country) error
+	Update(ctx context.Context, ID string, country *entity.Country) error
 	Delete(ctx context.Context, ID string) error
 }
 
@@ -37,7 +37,10 @@ func (r *repository) GetByID(ctx context.Context, ID string) (*entity.Country, e
 
 func (r *repository) GetByCode(ctx context.Context, code string) (*entity.Country, error) {
 	var country entity.Country
-	if err := r.db.GormDB.WithContext(ctx).First(&country, "code = ?", code).Error; err != nil {
+	condition := map[string]interface{}{
+		"is_active": true,
+	}
+	if err := r.db.GormDB.WithContext(ctx).Where(condition).First(&country, "code = ?", code).Error; err != nil {
 
 		return nil, err // Other errors
 	}
@@ -46,18 +49,24 @@ func (r *repository) GetByCode(ctx context.Context, code string) (*entity.Countr
 
 func (r *repository) GetAll(ctx context.Context) ([]*entity.Country, error) {
 	var countries []*entity.Country
-	if err := r.db.GormDB.WithContext(ctx).Find(&countries).Error; err != nil {
+	condition := map[string]interface{}{
+		"is_active": true,
+	}
+	if err := r.db.GormDB.WithContext(ctx).
+		Where(condition).
+		Order("precedence asc").
+		Find(&countries).Error; err != nil {
 		return nil, err
 	}
 	return countries, nil
 }
 
-func (r *repository) Create(ctx context.Context, country entity.Country) error {
-	return r.db.GormDB.WithContext(ctx).Create(&country).Error
+func (r *repository) Create(ctx context.Context, country *entity.Country) error {
+	return r.db.GormDB.WithContext(ctx).Create(country).Error
 }
 
-func (r *repository) Update(ctx context.Context, ID string, country entity.Country) error {
-	return r.db.GormDB.WithContext(ctx).Model(&entity.Country{}).Where("id = ?", ID).Updates(&country).Error
+func (r *repository) Update(ctx context.Context, ID string, country *entity.Country) error {
+	return r.db.GormDB.WithContext(ctx).Model(&entity.Country{}).Where("id = ?", ID).Updates(country).Error
 }
 
 func (r *repository) Delete(ctx context.Context, ID string) error {

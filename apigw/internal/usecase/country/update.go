@@ -8,7 +8,7 @@ import (
 )
 
 func (u *useCase) Update(ctx context.Context, ID string, country request.Update) error {
-	err := u.countryRepository.Update(ctx, ID, entity.Country{
+	return u.countryRepository.Update(ctx, ID, &entity.Country{
 		Name:         country.Name,
 		Code:         country.Code,
 		PhoneCode:    country.PhoneCode,
@@ -17,10 +17,8 @@ func (u *useCase) Update(ctx context.Context, ID string, country request.Update)
 		Longitude:    country.Longitude,
 		CurrencyCode: country.CurrencyCode,
 		IsActive:     country.IsActive,
+		Precedence:   country.Precedence,
 		UpdatedAt:    time.Now(),
 	})
-	if err != nil {
-		return err
-	}
-	return nil
+
 }

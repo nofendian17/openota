@@ -2,8 +2,12 @@ package usecase
 
 import (
 	"github.com/nofendian17/gopkg/logger"
+	cityRepository "github.com/nofendian17/openota/apigw/internal/repository/city"
 	countryRepository "github.com/nofendian17/openota/apigw/internal/repository/country"
+	stateRepository "github.com/nofendian17/openota/apigw/internal/repository/state"
+	"github.com/nofendian17/openota/apigw/internal/usecase/city"
 	"github.com/nofendian17/openota/apigw/internal/usecase/country"
+	"github.com/nofendian17/openota/apigw/internal/usecase/state"
 	"time"
 
 	"github.com/nofendian17/openota/apigw/internal/config"
@@ -15,6 +19,8 @@ import (
 type UseCase struct {
 	Health  healthcheck.UseCase
 	Country country.UseCase
+	State   state.UseCase
+	City    city.UseCase
 }
 
 // New creates a new instance of the UseCase struct, initializing it with the provided configuration and database.
@@ -24,8 +30,16 @@ func New(cfg *config.Config, logger logger.Logger, db *database.DB, cache cache.
 	countryRepo := countryRepository.New(db)
 	countryUseCase := country.New(logger, countryRepo)
 
+	stateRepo := stateRepository.New(db)
+	stateUseCase := state.New(logger, stateRepo)
+
+	cityRepo := cityRepository.New(db)
+	cityUseCase := city.New(logger, cityRepo)
+
 	return &UseCase{
 		Health:  healthUseCase,
 		Country: countryUseCase,
+		State:   stateUseCase,
+		City:    cityUseCase,
 	}
 }
