@@ -2,6 +2,7 @@ package handler
 
 import (
 	"github.com/nofendian17/openota/apigw/internal/container"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler/airline"
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler/airport"
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler/city"
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler/country"
@@ -15,6 +16,7 @@ type Handler struct {
 	State   state.Handler
 	City    city.Handler
 	Airport airport.Handler
+	Airline airline.Handler
 }
 
 func New(c *container.Container) *Handler {
@@ -24,5 +26,6 @@ func New(c *container.Container) *Handler {
 		State:   state.New(c),
 		City:    city.New(c),
 		Airport: airport.New(c),
+		Airline: airline.New(c),
 	}
 }

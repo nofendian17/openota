@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler"
+	mockAirlineHandler "github.com/nofendian17/openota/apigw/internal/mocks/delivery/rest/handler/airline"
 	mockAirportHandler "github.com/nofendian17/openota/apigw/internal/mocks/delivery/rest/handler/airport"
 	mockCityHandler "github.com/nofendian17/openota/apigw/internal/mocks/delivery/rest/handler/city"
 	mockCountryHandler "github.com/nofendian17/openota/apigw/internal/mocks/delivery/rest/handler/country"
@@ -164,6 +165,37 @@ func TestServer_routes(t *testing.T) {
 			w.WriteHeader(http.StatusOK)
 		}
 	})
+	_mockAirlineHandler := &mockAirlineHandler.Handler{}
+	_mockAirlineHandler.On("GetAll").Return(func() http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusOK)
+		}
+	})
+	_mockAirlineHandler.On("Create").Return(func() http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusCreated)
+		}
+	})
+	_mockAirlineHandler.On("GetByID").Return(func() http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusOK)
+		}
+	})
+	_mockAirlineHandler.On("Update").Return(func() http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusOK)
+		}
+	})
+	_mockAirlineHandler.On("Delete").Return(func() http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusOK)
+		}
+	})
+	_mockAirlineHandler.On("GetByCode").Return(func() http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusOK)
+		}
+	})
 
 	// Create a new instance of handler.Handler
 	h := &handler.Handler{
@@ -172,6 +204,7 @@ func TestServer_routes(t *testing.T) {
 		State:   _mockStateHandler,
 		City:    _mockCityHandler,
 		Airport: _mockAirportHandler,
+		Airline: _mockAirlineHandler,
 	}
 
 	// You may need to replace this with a mock or real implementation

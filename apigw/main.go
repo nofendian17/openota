@@ -43,6 +43,7 @@ func main() {
 		entity.State{},
 		entity.City{},
 		entity.Airport{},
+		entity.Airline{},
 	)
 	if err != nil {
 		panic(err)

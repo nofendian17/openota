@@ -8,6 +8,7 @@ import (
 	"github.com/nofendian17/gopkg/logger"
 	"github.com/nofendian17/openota/apigw/internal/config"
 	"github.com/nofendian17/openota/apigw/internal/container"
+	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler/airline"
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler/city"
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler/country"
 	"github.com/nofendian17/openota/apigw/internal/delivery/rest/handler/healthcheck"
@@ -56,6 +57,7 @@ func TestNew(t *testing.T) {
 				State:   state.New(cntr),
 				City:    city.New(cntr),
 				Airport: airport.New(cntr),
+				Airline: airline.New(cntr),
 			},
 		},
 	}
