@@ -38,7 +38,14 @@ func (r *repository) GetByID(ctx context.Context, ID string) (*entity.City, erro
 
 func (r *repository) GetByStateID(ctx context.Context, StateID string) ([]*entity.City, error) {
 	var cities []*entity.City
-	if err := r.db.GormDB.WithContext(ctx).Where("state_id = ?", StateID).Find(&cities).Error; err != nil {
+	condition := map[string]interface{}{
+		"is_active": true,
+	}
+	if err := r.db.GormDB.WithContext(ctx).
+		Where("state_id = ?", StateID).
+		Where(condition).
+		Order("precedence asc").
+		Find(&cities).Error; err != nil {
 		return nil, err
 	}
 	return cities, nil
@@ -46,7 +53,13 @@ func (r *repository) GetByStateID(ctx context.Context, StateID string) ([]*entit
 
 func (r *repository) GetAll(ctx context.Context) ([]*entity.City, error) {
 	var cities []*entity.City
-	if err := r.db.GormDB.WithContext(ctx).Find(&cities).Error; err != nil {
+	condition := map[string]interface{}{
+		"is_active": true,
+	}
+	if err := r.db.GormDB.WithContext(ctx).
+		Where(condition).
+		Order("precedence asc").
+		Find(&cities).Error; err != nil {
 		return nil, err
 	}
 	return cities, nil

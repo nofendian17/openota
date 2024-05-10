@@ -14,8 +14,9 @@ type Airport struct {
 	City       City      `json:"city" gorm:"references:ID"`
 	Latitude   float64   `json:"latitude" gorm:"type:DOUBLE PRECISION;null"`
 	Longitude  float64   `json:"longitude" gorm:"type:DOUBLE PRECISION;null"`
-	IsDomestic bool      `json:"is_domestic" gorm:"type:boolean;default:false"`
-	IsActive   bool      `json:"is_active" gorm:"type:boolean;default:true"`
+	IsDomestic *bool     `json:"is_domestic" gorm:"type:boolean;default:false"`
+	Timezone   string    `json:"timezone" gorm:"type:varchar(50);not null"`
+	IsActive   *bool     `json:"is_active" gorm:"type:boolean;default:true"`
 	Precedence int64     `json:"precedence" gorm:"type:integer;default:0"`
 	CreatedAt  time.Time `json:"created_at" gorm:"type:timestamp;not null"`
 	UpdatedAt  time.Time `json:"updated_at" gorm:"type:timestamp;not null"`

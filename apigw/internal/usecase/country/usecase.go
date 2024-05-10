@@ -10,7 +10,7 @@ import (
 
 type UseCase interface {
 	GetByID(ctx context.Context, ID string) (*response.Country, error)
-	GetByCode(ctx context.Context, Code string) (*response.Country, error)
+	GetByCode(ctx context.Context, code string) (*response.Country, error)
 	GetAll(ctx context.Context) ([]*response.Country, error)
 
 	Create(ctx context.Context, country request.Create) error

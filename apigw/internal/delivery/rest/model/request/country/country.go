@@ -13,10 +13,10 @@ type Create struct {
 	Code         string  `json:"code" validate:"required,min=3,max=3"`
 	PhoneCode    string  `json:"phone_code" validate:"required,max=5"`
 	Capital      string  `json:"capital" validate:"required,max=50"`
-	Latitude     float64 `json:"latitude" validate:"required"`
-	Longitude    float64 `json:"longitude" validate:"required"`
+	Latitude     float64 `json:"latitude" validate:"required,latitude"`
+	Longitude    float64 `json:"longitude" validate:"required,longitude"`
 	CurrencyCode string  `json:"currency" validate:"required,min=3,max=3"`
-	IsActive     *bool   `json:"is_active" validate:"required"`
+	IsActive     *bool   `json:"is_active" validate:"required,boolean"`
 }
 
 type Update struct {
@@ -25,8 +25,8 @@ type Update struct {
 	Code         string  `json:"code" validate:"required,min=3,max=3"`
 	PhoneCode    string  `json:"phone_code" validate:"required,max=5"`
 	Capital      string  `json:"capital" validate:"required,max=50"`
-	Latitude     float64 `json:"latitude" validate:"required"`
-	Longitude    float64 `json:"longitude" validate:"required"`
+	Latitude     float64 `json:"latitude" validate:"required,latitude"`
+	Longitude    float64 `json:"longitude" validate:"required,longitude"`
 	CurrencyCode string  `json:"currency" validate:"required,min=3,max=3"`
 	IsActive     *bool   `json:"is_active" validate:"required,boolean"`
 	Precedence   int64   `json:"precedence" validate:"required,min=0"`

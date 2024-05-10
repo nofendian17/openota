@@ -5,8 +5,8 @@ import (
 	response "github.com/nofendian17/openota/apigw/internal/delivery/rest/model/response/country"
 )
 
-func (u *useCase) GetByCode(ctx context.Context, Code string) (*response.Country, error) {
-	result, err := u.countryRepository.GetByCode(ctx, Code)
+func (u *useCase) GetByCode(ctx context.Context, code string) (*response.Country, error) {
+	result, err := u.countryRepository.GetByCode(ctx, code)
 	if err != nil {
 		return nil, err
 	}

@@ -29,4 +29,13 @@ func (s *server) routes() {
 	s.router.HandleFunc("PUT /api/v1/city/{cityID}", s.handler.City.Update())
 	s.router.HandleFunc("DELETE /api/v1/city/{cityID}", s.handler.City.Delete())
 	s.router.HandleFunc("GET /api/v1/city/state/{stateID}", s.handler.City.GetByStateID())
+
+	// airport api routes
+	s.router.HandleFunc("GET /api/v1/airport", s.handler.Airport.GetAll())
+	s.router.HandleFunc("POST /api/v1/airport", s.handler.Airport.Create())
+	s.router.HandleFunc("GET /api/v1/airport/{airportID}", s.handler.Airport.GetByID())
+	s.router.HandleFunc("PUT /api/v1/airport/{airportID}", s.handler.Airport.Update())
+	s.router.HandleFunc("DELETE /api/v1/airport/{airportID}", s.handler.Airport.Delete())
+	s.router.HandleFunc("GET /api/v1/airport/code/{airportCode}", s.handler.Airport.GetByCode())
+
 }

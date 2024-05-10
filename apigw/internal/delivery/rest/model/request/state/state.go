@@ -11,17 +11,17 @@ type GetByCountryID struct {
 type Create struct {
 	Name      string  `json:"name" validate:"required,max=50"`
 	CountryID string  `json:"country_id" validate:"required,uuid"`
-	Latitude  float64 `json:"latitude" validate:"required"`
-	Longitude float64 `json:"longitude" validate:"required"`
-	IsActive  *bool   `json:"is_active" validate:"required"`
+	Latitude  float64 `json:"latitude" validate:"required,latitude"`
+	Longitude float64 `json:"longitude" validate:"required,longitude"`
+	IsActive  *bool   `json:"is_active" validate:"required,boolean"`
 }
 
 type Update struct {
 	ID         string  `json:"id" validate:"required,uuid"`
 	Name       string  `json:"name" validate:"required,max=50"`
 	CountryID  string  `json:"country_id" validate:"required,uuid"`
-	Latitude   float64 `json:"latitude" validate:"required"`
-	Longitude  float64 `json:"longitude" validate:"required"`
+	Latitude   float64 `json:"latitude" validate:"required,latitude"`
+	Longitude  float64 `json:"longitude" validate:"required,longitude"`
 	IsActive   *bool   `json:"is_active" validate:"required,boolean"`
 	Precedence int64   `json:"precedence" validate:"required,min=0"`
 }
