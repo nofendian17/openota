@@ -20,9 +20,9 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	HealthCheckService_Ping_FullMethodName           = "/HealthCheckService/Ping"
-	HealthCheckService_GetHealthCheck_FullMethodName = "/HealthCheckService/GetHealthCheck"
-	HealthCheckService_GetReadiness_FullMethodName   = "/HealthCheckService/GetReadiness"
+	HealthCheckService_Ping_FullMethodName        = "/HealthCheckService/Ping"
+	HealthCheckService_HealthCheck_FullMethodName = "/HealthCheckService/HealthCheck"
+	HealthCheckService_Readiness_FullMethodName   = "/HealthCheckService/Readiness"
 )
 
 // HealthCheckServiceClient is the client API for HealthCheckService service.
@@ -30,8 +30,8 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type HealthCheckServiceClient interface {
 	Ping(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*PingResponse, error)
-	GetHealthCheck(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetHealthCheckResponse, error)
-	GetReadiness(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetReadinessResponse, error)
+	HealthCheck(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetHealthCheckResponse, error)
+	Readiness(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetReadinessResponse, error)
 }
 
 type healthCheckServiceClient struct {
@@ -51,18 +51,18 @@ func (c *healthCheckServiceClient) Ping(ctx context.Context, in *emptypb.Empty, 
 	return out, nil
 }
 
-func (c *healthCheckServiceClient) GetHealthCheck(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetHealthCheckResponse, error) {
+func (c *healthCheckServiceClient) HealthCheck(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetHealthCheckResponse, error) {
 	out := new(GetHealthCheckResponse)
-	err := c.cc.Invoke(ctx, HealthCheckService_GetHealthCheck_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, HealthCheckService_HealthCheck_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *healthCheckServiceClient) GetReadiness(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetReadinessResponse, error) {
+func (c *healthCheckServiceClient) Readiness(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetReadinessResponse, error) {
 	out := new(GetReadinessResponse)
-	err := c.cc.Invoke(ctx, HealthCheckService_GetReadiness_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, HealthCheckService_Readiness_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -74,8 +74,8 @@ func (c *healthCheckServiceClient) GetReadiness(ctx context.Context, in *emptypb
 // for forward compatibility
 type HealthCheckServiceServer interface {
 	Ping(context.Context, *emptypb.Empty) (*PingResponse, error)
-	GetHealthCheck(context.Context, *emptypb.Empty) (*GetHealthCheckResponse, error)
-	GetReadiness(context.Context, *emptypb.Empty) (*GetReadinessResponse, error)
+	HealthCheck(context.Context, *emptypb.Empty) (*GetHealthCheckResponse, error)
+	Readiness(context.Context, *emptypb.Empty) (*GetReadinessResponse, error)
 	mustEmbedUnimplementedHealthCheckServiceServer()
 }
 
@@ -86,11 +86,11 @@ type UnimplementedHealthCheckServiceServer struct {
 func (UnimplementedHealthCheckServiceServer) Ping(context.Context, *emptypb.Empty) (*PingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
 }
-func (UnimplementedHealthCheckServiceServer) GetHealthCheck(context.Context, *emptypb.Empty) (*GetHealthCheckResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetHealthCheck not implemented")
+func (UnimplementedHealthCheckServiceServer) HealthCheck(context.Context, *emptypb.Empty) (*GetHealthCheckResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HealthCheck not implemented")
 }
-func (UnimplementedHealthCheckServiceServer) GetReadiness(context.Context, *emptypb.Empty) (*GetReadinessResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetReadiness not implemented")
+func (UnimplementedHealthCheckServiceServer) Readiness(context.Context, *emptypb.Empty) (*GetReadinessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Readiness not implemented")
 }
 func (UnimplementedHealthCheckServiceServer) mustEmbedUnimplementedHealthCheckServiceServer() {}
 
@@ -123,38 +123,38 @@ func _HealthCheckService_Ping_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _HealthCheckService_GetHealthCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _HealthCheckService_HealthCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HealthCheckServiceServer).GetHealthCheck(ctx, in)
+		return srv.(HealthCheckServiceServer).HealthCheck(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: HealthCheckService_GetHealthCheck_FullMethodName,
+		FullMethod: HealthCheckService_HealthCheck_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HealthCheckServiceServer).GetHealthCheck(ctx, req.(*emptypb.Empty))
+		return srv.(HealthCheckServiceServer).HealthCheck(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _HealthCheckService_GetReadiness_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _HealthCheckService_Readiness_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HealthCheckServiceServer).GetReadiness(ctx, in)
+		return srv.(HealthCheckServiceServer).Readiness(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: HealthCheckService_GetReadiness_FullMethodName,
+		FullMethod: HealthCheckService_Readiness_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HealthCheckServiceServer).GetReadiness(ctx, req.(*emptypb.Empty))
+		return srv.(HealthCheckServiceServer).Readiness(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -171,12 +171,12 @@ var HealthCheckService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _HealthCheckService_Ping_Handler,
 		},
 		{
-			MethodName: "GetHealthCheck",
-			Handler:    _HealthCheckService_GetHealthCheck_Handler,
+			MethodName: "HealthCheck",
+			Handler:    _HealthCheckService_HealthCheck_Handler,
 		},
 		{
-			MethodName: "GetReadiness",
-			Handler:    _HealthCheckService_GetReadiness_Handler,
+			MethodName: "Readiness",
+			Handler:    _HealthCheckService_Readiness_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -20,7 +20,7 @@ func NewHealthCheckServiceServer(healthCheck healthcheck.UseCase) *HealthCheckSe
 	}
 }
 
-func (h *HealthCheckServiceServer) GetHealthCheck(ctx context.Context, request *emptypb.Empty) (*proto.GetHealthCheckResponse, error) {
+func (h *HealthCheckServiceServer) HealthCheck(ctx context.Context, request *emptypb.Empty) (*proto.GetHealthCheckResponse, error) {
 	health, err := h.healthCheck.Health(ctx)
 	if err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
@@ -34,7 +34,7 @@ func (h *HealthCheckServiceServer) GetHealthCheck(ctx context.Context, request *
 		}}, nil
 }
 
-func (h *HealthCheckServiceServer) GetReadiness(ctx context.Context, request *emptypb.Empty) (*proto.GetReadinessResponse, error) {
+func (h *HealthCheckServiceServer) Readiness(ctx context.Context, request *emptypb.Empty) (*proto.GetReadinessResponse, error) {
 	readiness, err := h.healthCheck.Readiness(ctx)
 	if err != nil {
 		return nil, status.Error(codes.Internal, err.Error())

@@ -24,8 +24,8 @@ message Check {
 
 service HealthCheckService {
   rpc Ping(google.protobuf.Empty) returns (PingResponse) {}
-  rpc GetHealthCheck(google.protobuf.Empty) returns (GetHealthCheckResponse) {}
-  rpc GetReadiness(google.protobuf.Empty) returns (GetReadinessResponse) {}
+  rpc HealthCheck(google.protobuf.Empty) returns (GetHealthCheckResponse) {}
+  rpc Readiness(google.protobuf.Empty) returns (GetReadinessResponse) {}
 }
 
 message PingResponse {
