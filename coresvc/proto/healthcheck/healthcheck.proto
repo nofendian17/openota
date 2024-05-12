@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package core.healthcheck;
+
+import "google/protobuf/empty.proto";
+
+message Health {
+  string version = 1;
+  string uptime = 2;
+  string cpu = 3;
+  string memory = 4;
+}
+
+message Readiness {
+  string status = 1;
+  repeated Check checks = 2;
+}
+
+message Check {
+  string name = 1;
+  string status = 2;
+  string error = 3;
+}

@@ -1,0 +1,18 @@
+# Doc : https://buf.build/docs/configuration/v1/buf-gen-yaml
+version: v1
+managed:
+  enabled: true
+  optimize_for: CODE_SIZE
+  go_package_prefix:
+    default: .
+    except:
+      - buf.build/bufbuild/protovalidate
+plugins:
+  - name: go
+    out: gen/go
+    opt: paths=source_relative
+  - name: go-grpc
+    out: gen/go
+    opt: paths=source_relative
+  - plugin: buf.build/protocolbuffers/python:v21.9
+    out: gen/python

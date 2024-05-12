@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package core.healthcheck;
+
+import "google/protobuf/empty.proto";
+import "buf/validate/validate.proto";
+import "proto/healthcheck/healthcheck.proto";
+
+
+
+service HealthCheckService {
+  rpc Ping(google.protobuf.Empty) returns (PingResponse) {};
+  rpc HealthCheck(google.protobuf.Empty) returns (GetHealthCheckResponse) {};
+  rpc Readiness(google.protobuf.Empty) returns (GetReadinessResponse) {};
+}
+
+message PingResponse {
+  string reply = 1;
+}
+
+message GetHealthCheckResponse{
+  Health health = 1;
+}
+
+message GetReadinessResponse {
+    Readiness readiness = 1;
+}
