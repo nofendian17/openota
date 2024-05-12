@@ -1,0 +1,41 @@
+syntax = "proto3";
+option  go_package = "./proto";
+import "google/protobuf/empty.proto";
+
+message Health {
+  string version = 1;
+  string uptime = 2;
+  string cpu = 3;
+  string memory = 4;
+}
+
+message Readiness {
+  string status = 1;
+  repeated Check checks = 2;
+}
+
+message Check {
+  string name = 1;
+  string status = 2;
+  string error = 3;
+}
+
+
+
+service HealthCheckService {
+  rpc Ping(google.protobuf.Empty) returns (PingResponse) {}
+  rpc GetHealthCheck(google.protobuf.Empty) returns (GetHealthCheckResponse) {}
+  rpc GetReadiness(google.protobuf.Empty) returns (GetReadinessResponse) {}
+}
+
+message PingResponse {
+  string reply = 1;
+}
+
+message GetHealthCheckResponse{
+  Health health = 1;
+}
+
+message GetReadinessResponse {
+    Readiness readiness = 1;
+}
