@@ -11,6 +11,7 @@ import (
 	"github.com/nofendian17/openota/coresvc/internal/delivery/grpc/middleware"
 	"github.com/nofendian17/openota/coresvc/internal/usecase"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 	"net"
 	"strconv"
 )
@@ -48,6 +49,8 @@ func (s *server) Start(port int) error {
 	airlineServiceServer := handler.NewAirlineServiceServer(s.useCase.Airline)
 	airlinev1.RegisterAirlineServiceServer(s.grpcServer, airlineServiceServer)
 
+	// Register reflection service on gRPC server.
+	reflection.Register(s.grpcServer)
 	s.logger.Info(context.Background(), fmt.Sprintf("gRPC server started on port %d", port), nil)
 
 	if err = s.grpcServer.Serve(lis); err != nil {

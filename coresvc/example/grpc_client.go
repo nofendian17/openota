@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/google/uuid"
 	airlinev1 "github.com/nofendian17/openota/coresvc/gen/go/proto/airline/v1"
 	"github.com/nofendian17/openota/coresvc/gen/go/proto/healthcheck"
 	"google.golang.org/grpc/credentials/insecure"
@@ -60,10 +61,21 @@ func main() {
 	fmt.Println(airlines.GetAirlines())
 
 	getByID, err := airlineServiceClient.GetByID(ctx, &airlinev1.GetByIDRequest{
-		Id: "not-valid",
+		Id: uuid.NewString(),
 	})
 	if err != nil {
-		log.Fatalf("Could not create request: %v", err)
+		log.Fatalf("Could not create request GetByID : %v", err)
 	}
 	fmt.Println(getByID)
+
+	create, err := airlineServiceClient.Create(ctx, &airlinev1.CreateRequest{
+		Code:     "",
+		Name:     "",
+		Logo:     "",
+		IsActive: false,
+	})
+	if err != nil {
+		log.Fatalf("Could not create request Create: %v", err)
+	}
+	fmt.Println(create)
 }
