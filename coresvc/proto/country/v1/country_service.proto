@@ -1,0 +1,65 @@
+syntax = "proto3";
+package core.country.v1;
+
+import "google/protobuf/empty.proto";
+import "proto/country/v1/country.proto";
+import "buf/validate/validate.proto";
+
+service CountryService {
+  rpc GetByID(GetByIDRequest) returns (GetByIDResponse) {};
+  rpc GetByCode(GetByCodeRequest) returns (GetByCodeResponse) {};
+  rpc GetAll(google.protobuf.Empty) returns (GetAllResponse) {};
+  rpc Create(CreateRequest) returns (google.protobuf.Empty) {};
+  rpc Update(UpdateRequest) returns (google.protobuf.Empty) {};
+  rpc Delete(DeleteRequest) returns (google.protobuf.Empty) {};
+}
+
+
+message GetByIDRequest {
+  string id = 1 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
+}
+
+message GetByCodeRequest {
+  string code = 1 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 3, (buf.validate.field).string.max_len = 3];
+}
+
+message CreateRequest {
+  string code = 1 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 3, (buf.validate.field).string.max_len = 3];
+  string name = 2 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 1, (buf.validate.field).string.max_len = 255];
+  string phone_code = 3 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 2, (buf.validate.field).string.max_len = 5];
+  string capital = 4 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 5, (buf.validate.field).string.max_len = 255];
+  double latitude = 5 [(buf.validate.field).required = true];
+  double longitude = 6 [(buf.validate.field).required = true];
+  string currency_code = 7 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 3, (buf.validate.field).string.max_len = 3];
+  bool is_active = 8 [(buf.validate.field).required = true, (buf.validate.field).bool.const = true];
+}
+
+message UpdateRequest {
+  string id = 1 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
+  string code = 2 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 3, (buf.validate.field).string.max_len = 3];
+  string name = 3 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 1, (buf.validate.field).string.max_len = 255];
+  string phone_code = 4 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 2, (buf.validate.field).string.max_len = 5];
+  string capital = 5 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 5, (buf.validate.field).string.max_len = 255];
+  double latitude = 6 [(buf.validate.field).required = true];
+  double longitude = 7 [(buf.validate.field).required = true];
+  string currency_code = 8 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 3, (buf.validate.field).string.max_len = 3];
+  bool is_active = 9 [(buf.validate.field).required = true, (buf.validate.field).bool.const = true];
+  int64 precedence = 10 [(buf.validate.field).required = true, (buf.validate.field).int64.gte = 5];
+}
+
+message DeleteRequest {
+  string id = 1 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
+}
+
+
+message GetByIDResponse {
+  Country country = 1;
+}
+
+message GetByCodeResponse {
+  Country country = 1;
+}
+
+message GetAllResponse {
+  repeated Country countries = 1;
+}
