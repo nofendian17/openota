@@ -2,6 +2,7 @@ package handler
 
 import (
 	"context"
+	"errors"
 	"github.com/bufbuild/protovalidate-go"
 	pb "github.com/nofendian17/openota/coresvc/gen/go/proto/airline/v1"
 	"github.com/nofendian17/openota/coresvc/internal/entity"
@@ -10,6 +11,7 @@ import (
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/emptypb"
 	"google.golang.org/protobuf/types/known/timestamppb"
+	"gorm.io/gorm"
 	"time"
 )
 
@@ -36,6 +38,9 @@ func (h *AirlineServiceServer) GetByID(ctx context.Context, req *pb.GetByIDReque
 
 	result, err := h.airlineUseCase.GetByID(ctx, req.GetId())
 	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, status.Error(codes.NotFound, err.Error())
+		}
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 
@@ -62,6 +67,9 @@ func (h *AirlineServiceServer) GetByCode(ctx context.Context, req *pb.GetByCodeR
 
 	result, err := h.airlineUseCase.GetByCode(ctx, req.GetCode())
 	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, status.Error(codes.NotFound, err.Error())
+		}
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 
@@ -132,6 +140,14 @@ func (h *AirlineServiceServer) Update(ctx context.Context, req *pb.UpdateRequest
 		return nil, status.Error(codes.InvalidArgument, err.Error())
 	}
 
+	_, err = h.airlineUseCase.GetByID(ctx, req.GetId())
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, status.Error(codes.NotFound, err.Error())
+		}
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+
 	err = h.airlineUseCase.Update(ctx, req.GetId(), entity.Airline{
 		Name:       req.GetName(),
 		Code:       req.GetCode(),
@@ -154,6 +170,14 @@ func (h *AirlineServiceServer) Delete(ctx context.Context, req *pb.DeleteRequest
 	if err = v.Validate(req); err != nil {
 		return nil, status.Error(codes.InvalidArgument, err.Error())
 	}
+	_, err = h.airlineUseCase.GetByID(ctx, req.GetId())
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, status.Error(codes.NotFound, err.Error())
+		}
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+
 	err = h.airlineUseCase.Delete(ctx, req.GetId())
 	if err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
