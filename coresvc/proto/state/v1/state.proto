@@ -1,0 +1,18 @@
+syntax = "proto3";
+package core.state.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+message State {
+  string id = 1;
+  string name = 2;
+  string country_id = 3;
+  double latitude = 4;
+  double longitude = 5;
+  string currency_code = 6;
+  bool is_active =  7;
+  int64 precedence = 8;
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+}
