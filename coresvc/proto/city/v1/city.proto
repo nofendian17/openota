@@ -1,0 +1,17 @@
+syntax = "proto3";
+package core.city.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+message City {
+  string id = 1;
+  string name = 2;
+  string state_id = 3;
+  double latitude = 4;
+  double longitude = 5;
+  bool is_active =  7;
+  int64 precedence = 8;
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+}

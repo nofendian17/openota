@@ -1,0 +1,51 @@
+syntax = "proto3";
+package core.city.v1;
+
+import "google/protobuf/empty.proto";
+import "proto/city/v1/city.proto";
+import "buf/validate/validate.proto";
+
+service CityService {
+  rpc GetByID(GetByIDRequest) returns (GetByIDResponse) {};
+  rpc GetAll(google.protobuf.Empty) returns (GetAllResponse) {};
+  rpc Create(CreateRequest) returns (google.protobuf.Empty) {};
+  rpc Update(UpdateRequest) returns (google.protobuf.Empty) {};
+  rpc Delete(DeleteRequest) returns (google.protobuf.Empty) {};
+}
+
+
+message GetByIDRequest {
+  string id = 1 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
+}
+
+message CreateRequest {
+  string name = 1 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 1, (buf.validate.field).string.max_len = 255];
+  string state_id = 2 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
+  double latitude = 3 [(buf.validate.field).required = true];
+  double longitude = 4 [(buf.validate.field).required = true];
+  bool is_active = 5 [(buf.validate.field).required = true, (buf.validate.field).bool.const = true];
+}
+
+message UpdateRequest {
+  string id = 1 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
+  string name = 2 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 1, (buf.validate.field).string.max_len = 255];
+  string state_id = 3 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
+  double latitude = 4 [(buf.validate.field).required = true];
+  double longitude = 5 [(buf.validate.field).required = true];
+  bool is_active = 7 [(buf.validate.field).required = true, (buf.validate.field).bool.const = true];
+  int64 precedence = 6 [(buf.validate.field).required = true, (buf.validate.field).int64.gte = 0];
+}
+
+message DeleteRequest {
+  string id = 1 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
+}
+
+
+message GetByIDResponse {
+  City city = 1;
+}
+
+
+message GetAllResponse {
+  repeated City cities = 1;
+}
