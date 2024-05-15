@@ -1,0 +1,65 @@
+syntax = "proto3";
+package core.airport.v1;
+
+import "google/protobuf/empty.proto";
+import "proto/airport/v1/airport.proto";
+import "buf/validate/validate.proto";
+
+service AirportService {
+  rpc GetByID(GetByIDRequest) returns (GetByIDResponse) {};
+  rpc GetByCode(GetByCodeRequest) returns (GetByCodeResponse) {};
+  rpc GetAll(google.protobuf.Empty) returns (GetAllResponse) {};
+  rpc Create(CreateRequest) returns (google.protobuf.Empty) {};
+  rpc Update(UpdateRequest) returns (google.protobuf.Empty) {};
+  rpc Delete(DeleteRequest) returns (google.protobuf.Empty) {};
+}
+
+
+message GetByIDRequest {
+  string id = 1 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
+}
+
+message GetByCodeRequest {
+  string code = 1 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 3, (buf.validate.field).string.max_len = 3];
+}
+
+message CreateRequest {
+  string code = 1 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 3, (buf.validate.field).string.max_len = 3];
+  string name = 2 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 1, (buf.validate.field).string.max_len = 255];
+  string city_id = 3 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
+  double latitude = 4 [(buf.validate.field).required = true];
+  double longitude = 5 [(buf.validate.field).required = true];
+  bool is_domestic = 6 [(buf.validate.field).required = true, (buf.validate.field).bool.const = true];
+  string timezone = 7 [(buf.validate.field).required = true];
+  bool is_active = 8 [(buf.validate.field).required = true, (buf.validate.field).bool.const = true];
+}
+
+message UpdateRequest {
+  string id = 1 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
+  string code = 2 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 3, (buf.validate.field).string.max_len = 3];
+  string name = 3 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 1, (buf.validate.field).string.max_len = 255];
+  string city_id = 4 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
+  double latitude = 5 [(buf.validate.field).required = true];
+  double longitude = 6 [(buf.validate.field).required = true];
+  bool is_domestic = 7 [(buf.validate.field).required = true, (buf.validate.field).bool.const = true];
+  string timezone = 8 [(buf.validate.field).required = true];
+  bool is_active = 9 [(buf.validate.field).required = true, (buf.validate.field).bool.const = true];
+  int64 precedence = 10 [(buf.validate.field).required = true, (buf.validate.field).int64.gte = 0];
+}
+
+message DeleteRequest {
+  string id = 1 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
+}
+
+
+message GetByIDResponse {
+  Airport airport = 1;
+}
+
+message GetByCodeResponse {
+  Airport airport = 1;
+}
+
+message GetAllResponse {
+  repeated Airport airports = 1;
+}

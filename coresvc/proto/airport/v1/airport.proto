@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package core.airport.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+message Airport {
+  string id = 1;
+  string code = 2;
+  string name = 3;
+  string city_id = 4;
+  double latitude = 5;
+  double longitude = 6;
+  bool is_domestic = 7;
+  string timezone = 8;
+  bool is_active = 9;
+  int64 precedence = 10;
+  google.protobuf.Timestamp created_at = 11;
+  google.protobuf.Timestamp updated_at = 12;
+}

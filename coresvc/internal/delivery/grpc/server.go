@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/nofendian17/gopkg/logger"
 	airlinev1 "github.com/nofendian17/openota/coresvc/gen/go/proto/airline/v1"
+	airportv1 "github.com/nofendian17/openota/coresvc/gen/go/proto/airport/v1"
 	cityv1 "github.com/nofendian17/openota/coresvc/gen/go/proto/city/v1"
 	countryv1 "github.com/nofendian17/openota/coresvc/gen/go/proto/country/v1"
 	"github.com/nofendian17/openota/coresvc/gen/go/proto/healthcheck"
@@ -51,6 +52,9 @@ func (s *server) Start(port int) error {
 
 	airlineServiceServer := handler.NewAirlineServiceServer(s.useCase.Airline)
 	airlinev1.RegisterAirlineServiceServer(s.grpcServer, airlineServiceServer)
+
+	airportServiceServer := handler.NewAirportServiceServer(s.useCase.Airport)
+	airportv1.RegisterAirportServiceServer(s.grpcServer, airportServiceServer)
 
 	countryServiceServer := handler.NewCountryServiceServer(s.useCase.Country)
 	countryv1.RegisterCountryServiceServer(s.grpcServer, countryServiceServer)

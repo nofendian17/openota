@@ -16,3 +16,5 @@ plugins:
     opt: paths=source_relative
   - plugin: buf.build/protocolbuffers/python:v21.9
     out: gen/python
+  - plugin: buf.build/protocolbuffers/java:v25.1
+    out: gen
