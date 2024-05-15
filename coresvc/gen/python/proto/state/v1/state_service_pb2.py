@@ -16,7 +16,7 @@ from proto.state.v1 import state_pb2 as proto_dot_state_dot_v1_dot_state__pb2
 from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"proto/state/v1/state_service.proto\x12\rcore.state.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1aproto/state/v1/state.proto\x1a\x1b\x62uf/validate/validate.proto\"-\n\x0eGetByIDRequest\x12\x1b\n\x02id\x18\x01 \x01(\tB\x0b\xbaH\x08\xc8\x01\x01r\x03\xb0\x01\x01R\x02id\"\xa6\x02\n\rCreateRequest\x12 \n\x04\x63ode\x18\x01 \x01(\tB\x0c\xbaH\t\xc8\x01\x01r\x04\x10\x03\x18\x03R\x04\x63ode\x12!\n\x04name\x18\x02 \x01(\tB\r\xbaH\n\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12*\n\ncountry_id\x18\x03 \x01(\tB\x0b\xbaH\x08\xc8\x01\x01r\x03\xb0\x01\x01R\tcountryId\x12\"\n\x08latitude\x18\x04 \x01(\x01\x42\x06\xbaH\x03\xc8\x01\x01R\x08latitude\x12$\n\tlongitude\x18\x05 \x01(\x01\x42\x06\xbaH\x03\xc8\x01\x01R\tlongitude\x12\x31\n\rcurrency_code\x18\x06 \x01(\tB\x0c\xbaH\t\xc8\x01\x01r\x04\x10\x03\x18\x03R\x0c\x63urrencyCode\x12\'\n\tis_active\x18\x07 \x01(\x08\x42\n\xbaH\x07\xc8\x01\x01j\x02\x08\x01R\x08isActive\"\xcd\x02\n\rUpdateRequest\x12\x1b\n\x02id\x18\x01 \x01(\tB\x0b\xbaH\x08\xc8\x01\x01r\x03\xb0\x01\x01R\x02id\x12!\n\x04name\x18\x02 \x01(\tB\r\xbaH\n\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12*\n\ncountry_id\x18\x03 \x01(\tB\x0b\xbaH\x08\xc8\x01\x01r\x03\xb0\x01\x01R\tcountryId\x12\"\n\x08latitude\x18\x04 \x01(\x01\x42\x06\xbaH\x03\xc8\x01\x01R\x08latitude\x12$\n\tlongitude\x18\x05 \x01(\x01\x42\x06\xbaH\x03\xc8\x01\x01R\tlongitude\x12\x31\n\rcurrency_code\x18\x06 \x01(\tB\x0c\xbaH\t\xc8\x01\x01r\x04\x10\x03\x18\x03R\x0c\x63urrencyCode\x12\'\n\tis_active\x18\x07 \x01(\x08\x42\n\xbaH\x07\xc8\x01\x01j\x02\x08\x01R\x08isActive\x12*\n\nprecedence\x18\x08 \x01(\x03\x42\n\xbaH\x07\xc8\x01\x01\"\x02(\x00R\nprecedence\",\n\rDeleteRequest\x12\x1b\n\x02id\x18\x01 \x01(\tB\x0b\xbaH\x08\xc8\x01\x01r\x03\xb0\x01\x01R\x02id\"=\n\x0fGetByIDResponse\x12*\n\x05state\x18\x01 \x01(\x0b\x32\x14.core.state.v1.StateR\x05state\">\n\x0eGetAllResponse\x12,\n\x06states\x18\x01 \x03(\x0b\x32\x14.core.state.v1.StateR\x06states2\xe5\x02\n\x0e\x43ountryService\x12J\n\x07GetByID\x12\x1d.core.state.v1.GetByIDRequest\x1a\x1e.core.state.v1.GetByIDResponse\"\x00\x12\x41\n\x06GetAll\x12\x16.google.protobuf.Empty\x1a\x1d.core.state.v1.GetAllResponse\"\x00\x12@\n\x06\x43reate\x12\x1c.core.state.v1.CreateRequest\x1a\x16.google.protobuf.Empty\"\x00\x12@\n\x06Update\x12\x1c.core.state.v1.UpdateRequest\x1a\x16.google.protobuf.Empty\"\x00\x12@\n\x06\x44\x65lete\x12\x1c.core.state.v1.DeleteRequest\x1a\x16.google.protobuf.Empty\"\x00\x42\x96\x01\n\x11\x63om.core.state.v1B\x11StateServiceProtoH\x02P\x01Z\x16proto/state/v1;statev1\xa2\x02\x03\x43SX\xaa\x02\rCore.State.V1\xca\x02\rCore\\State\\V1\xe2\x02\x19\x43ore\\State\\V1\\GPBMetadata\xea\x02\x0f\x43ore::State::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"proto/state/v1/state_service.proto\x12\rcore.state.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1aproto/state/v1/state.proto\x1a\x1b\x62uf/validate/validate.proto\"-\n\x0eGetByIDRequest\x12\x1b\n\x02id\x18\x01 \x01(\tB\x0b\xbaH\x08\xc8\x01\x01r\x03\xb0\x01\x01R\x02id\"\xf3\x01\n\rCreateRequest\x12 \n\x04\x63ode\x18\x01 \x01(\tB\x0c\xbaH\t\xc8\x01\x01r\x04\x10\x03\x18\x03R\x04\x63ode\x12!\n\x04name\x18\x02 \x01(\tB\r\xbaH\n\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12*\n\ncountry_id\x18\x03 \x01(\tB\x0b\xbaH\x08\xc8\x01\x01r\x03\xb0\x01\x01R\tcountryId\x12\"\n\x08latitude\x18\x04 \x01(\x01\x42\x06\xbaH\x03\xc8\x01\x01R\x08latitude\x12$\n\tlongitude\x18\x05 \x01(\x01\x42\x06\xbaH\x03\xc8\x01\x01R\tlongitude\x12\'\n\tis_active\x18\x07 \x01(\x08\x42\n\xbaH\x07\xc8\x01\x01j\x02\x08\x01R\x08isActive\"\x9a\x02\n\rUpdateRequest\x12\x1b\n\x02id\x18\x01 \x01(\tB\x0b\xbaH\x08\xc8\x01\x01r\x03\xb0\x01\x01R\x02id\x12!\n\x04name\x18\x02 \x01(\tB\r\xbaH\n\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12*\n\ncountry_id\x18\x03 \x01(\tB\x0b\xbaH\x08\xc8\x01\x01r\x03\xb0\x01\x01R\tcountryId\x12\"\n\x08latitude\x18\x04 \x01(\x01\x42\x06\xbaH\x03\xc8\x01\x01R\x08latitude\x12$\n\tlongitude\x18\x05 \x01(\x01\x42\x06\xbaH\x03\xc8\x01\x01R\tlongitude\x12\'\n\tis_active\x18\x07 \x01(\x08\x42\n\xbaH\x07\xc8\x01\x01j\x02\x08\x01R\x08isActive\x12*\n\nprecedence\x18\x08 \x01(\x03\x42\n\xbaH\x07\xc8\x01\x01\"\x02(\x00R\nprecedence\",\n\rDeleteRequest\x12\x1b\n\x02id\x18\x01 \x01(\tB\x0b\xbaH\x08\xc8\x01\x01r\x03\xb0\x01\x01R\x02id\"=\n\x0fGetByIDResponse\x12*\n\x05state\x18\x01 \x01(\x0b\x32\x14.core.state.v1.StateR\x05state\">\n\x0eGetAllResponse\x12,\n\x06states\x18\x01 \x03(\x0b\x32\x14.core.state.v1.StateR\x06states2\xe3\x02\n\x0cStateService\x12J\n\x07GetByID\x12\x1d.core.state.v1.GetByIDRequest\x1a\x1e.core.state.v1.GetByIDResponse\"\x00\x12\x41\n\x06GetAll\x12\x16.google.protobuf.Empty\x1a\x1d.core.state.v1.GetAllResponse\"\x00\x12@\n\x06\x43reate\x12\x1c.core.state.v1.CreateRequest\x1a\x16.google.protobuf.Empty\"\x00\x12@\n\x06Update\x12\x1c.core.state.v1.UpdateRequest\x1a\x16.google.protobuf.Empty\"\x00\x12@\n\x06\x44\x65lete\x12\x1c.core.state.v1.DeleteRequest\x1a\x16.google.protobuf.Empty\"\x00\x42\x96\x01\n\x11\x63om.core.state.v1B\x11StateServiceProtoH\x02P\x01Z\x16proto/state/v1;statev1\xa2\x02\x03\x43SX\xaa\x02\rCore.State.V1\xca\x02\rCore\\State\\V1\xe2\x02\x19\x43ore\\State\\V1\\GPBMetadata\xea\x02\x0f\x43ore::State::V1b\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'proto.state.v1.state_service_pb2', globals())
@@ -36,8 +36,6 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _CREATEREQUEST.fields_by_name['latitude']._serialized_options = b'\272H\003\310\001\001'
   _CREATEREQUEST.fields_by_name['longitude']._options = None
   _CREATEREQUEST.fields_by_name['longitude']._serialized_options = b'\272H\003\310\001\001'
-  _CREATEREQUEST.fields_by_name['currency_code']._options = None
-  _CREATEREQUEST.fields_by_name['currency_code']._serialized_options = b'\272H\t\310\001\001r\004\020\003\030\003'
   _CREATEREQUEST.fields_by_name['is_active']._options = None
   _CREATEREQUEST.fields_by_name['is_active']._serialized_options = b'\272H\007\310\001\001j\002\010\001'
   _UPDATEREQUEST.fields_by_name['id']._options = None
@@ -50,8 +48,6 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _UPDATEREQUEST.fields_by_name['latitude']._serialized_options = b'\272H\003\310\001\001'
   _UPDATEREQUEST.fields_by_name['longitude']._options = None
   _UPDATEREQUEST.fields_by_name['longitude']._serialized_options = b'\272H\003\310\001\001'
-  _UPDATEREQUEST.fields_by_name['currency_code']._options = None
-  _UPDATEREQUEST.fields_by_name['currency_code']._serialized_options = b'\272H\t\310\001\001r\004\020\003\030\003'
   _UPDATEREQUEST.fields_by_name['is_active']._options = None
   _UPDATEREQUEST.fields_by_name['is_active']._serialized_options = b'\272H\007\310\001\001j\002\010\001'
   _UPDATEREQUEST.fields_by_name['precedence']._options = None
@@ -61,15 +57,15 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _GETBYIDREQUEST._serialized_start=139
   _GETBYIDREQUEST._serialized_end=184
   _CREATEREQUEST._serialized_start=187
-  _CREATEREQUEST._serialized_end=481
-  _UPDATEREQUEST._serialized_start=484
-  _UPDATEREQUEST._serialized_end=817
-  _DELETEREQUEST._serialized_start=819
-  _DELETEREQUEST._serialized_end=863
-  _GETBYIDRESPONSE._serialized_start=865
-  _GETBYIDRESPONSE._serialized_end=926
-  _GETALLRESPONSE._serialized_start=928
-  _GETALLRESPONSE._serialized_end=990
-  _COUNTRYSERVICE._serialized_start=993
-  _COUNTRYSERVICE._serialized_end=1350
+  _CREATEREQUEST._serialized_end=430
+  _UPDATEREQUEST._serialized_start=433
+  _UPDATEREQUEST._serialized_end=715
+  _DELETEREQUEST._serialized_start=717
+  _DELETEREQUEST._serialized_end=761
+  _GETBYIDRESPONSE._serialized_start=763
+  _GETBYIDRESPONSE._serialized_end=824
+  _GETALLRESPONSE._serialized_start=826
+  _GETALLRESPONSE._serialized_end=888
+  _STATESERVICE._serialized_start=891
+  _STATESERVICE._serialized_end=1246
 # @@protoc_insertion_point(module_scope)

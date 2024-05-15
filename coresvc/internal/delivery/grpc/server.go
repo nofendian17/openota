@@ -7,6 +7,7 @@ import (
 	airlinev1 "github.com/nofendian17/openota/coresvc/gen/go/proto/airline/v1"
 	countryv1 "github.com/nofendian17/openota/coresvc/gen/go/proto/country/v1"
 	"github.com/nofendian17/openota/coresvc/gen/go/proto/healthcheck"
+	statev1 "github.com/nofendian17/openota/coresvc/gen/go/proto/state/v1"
 	"github.com/nofendian17/openota/coresvc/internal/container"
 	"github.com/nofendian17/openota/coresvc/internal/delivery/grpc/handler"
 	"github.com/nofendian17/openota/coresvc/internal/delivery/grpc/middleware"
@@ -52,6 +53,9 @@ func (s *server) Start(port int) error {
 
 	countryServiceServer := handler.NewCountryServiceServer(s.useCase.Country)
 	countryv1.RegisterCountryServiceServer(s.grpcServer, countryServiceServer)
+
+	stateServiceServer := handler.NewStateServiceServer(s.useCase.State)
+	statev1.RegisterStateServiceServer(s.grpcServer, stateServiceServer)
 
 	// Register reflection service on gRPC server.
 	reflection.Register(s.grpcServer)

@@ -5,7 +5,7 @@ import "google/protobuf/empty.proto";
 import "proto/state/v1/state.proto";
 import "buf/validate/validate.proto";
 
-service CountryService {
+service StateService {
   rpc GetByID(GetByIDRequest) returns (GetByIDResponse) {};
   rpc GetAll(google.protobuf.Empty) returns (GetAllResponse) {};
   rpc Create(CreateRequest) returns (google.protobuf.Empty) {};
@@ -24,7 +24,6 @@ message CreateRequest {
   string country_id = 3 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
   double latitude = 4 [(buf.validate.field).required = true];
   double longitude = 5 [(buf.validate.field).required = true];
-  string currency_code = 6 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 3, (buf.validate.field).string.max_len = 3];
   bool is_active = 7 [(buf.validate.field).required = true, (buf.validate.field).bool.const = true];
 }
 
@@ -33,9 +32,7 @@ message UpdateRequest {
   string name = 2 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 1, (buf.validate.field).string.max_len = 255];
   string country_id = 3 [(buf.validate.field).required = true, (buf.validate.field).string.uuid = true];
   double latitude = 4 [(buf.validate.field).required = true];
-  double longitude = 5 [(buf.validate.field).required = true];
-  string currency_code = 6 [(buf.validate.field).required = true, (buf.validate.field).string.min_len = 3, (buf.validate.field).string.max_len = 3];
-  bool is_active = 7 [(buf.validate.field).required = true, (buf.validate.field).bool.const = true];
+  double longitude = 5 [(buf.validate.field).required = true];bool is_active = 7 [(buf.validate.field).required = true, (buf.validate.field).bool.const = true];
   int64 precedence = 8 [(buf.validate.field).required = true, (buf.validate.field).int64.gte = 0];
 }
 

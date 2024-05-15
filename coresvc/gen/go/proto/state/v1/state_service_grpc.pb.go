@@ -20,17 +20,17 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	CountryService_GetByID_FullMethodName = "/core.state.v1.CountryService/GetByID"
-	CountryService_GetAll_FullMethodName  = "/core.state.v1.CountryService/GetAll"
-	CountryService_Create_FullMethodName  = "/core.state.v1.CountryService/Create"
-	CountryService_Update_FullMethodName  = "/core.state.v1.CountryService/Update"
-	CountryService_Delete_FullMethodName  = "/core.state.v1.CountryService/Delete"
+	StateService_GetByID_FullMethodName = "/core.state.v1.StateService/GetByID"
+	StateService_GetAll_FullMethodName  = "/core.state.v1.StateService/GetAll"
+	StateService_Create_FullMethodName  = "/core.state.v1.StateService/Create"
+	StateService_Update_FullMethodName  = "/core.state.v1.StateService/Update"
+	StateService_Delete_FullMethodName  = "/core.state.v1.StateService/Delete"
 )
 
-// CountryServiceClient is the client API for CountryService service.
+// StateServiceClient is the client API for StateService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type CountryServiceClient interface {
+type StateServiceClient interface {
 	GetByID(ctx context.Context, in *GetByIDRequest, opts ...grpc.CallOption) (*GetByIDResponse, error)
 	GetAll(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllResponse, error)
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
@@ -38,219 +38,219 @@ type CountryServiceClient interface {
 	Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
-type countryServiceClient struct {
+type stateServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewCountryServiceClient(cc grpc.ClientConnInterface) CountryServiceClient {
-	return &countryServiceClient{cc}
+func NewStateServiceClient(cc grpc.ClientConnInterface) StateServiceClient {
+	return &stateServiceClient{cc}
 }
 
-func (c *countryServiceClient) GetByID(ctx context.Context, in *GetByIDRequest, opts ...grpc.CallOption) (*GetByIDResponse, error) {
+func (c *stateServiceClient) GetByID(ctx context.Context, in *GetByIDRequest, opts ...grpc.CallOption) (*GetByIDResponse, error) {
 	out := new(GetByIDResponse)
-	err := c.cc.Invoke(ctx, CountryService_GetByID_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, StateService_GetByID_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *countryServiceClient) GetAll(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllResponse, error) {
+func (c *stateServiceClient) GetAll(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllResponse, error) {
 	out := new(GetAllResponse)
-	err := c.cc.Invoke(ctx, CountryService_GetAll_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, StateService_GetAll_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *countryServiceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *stateServiceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, CountryService_Create_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, StateService_Create_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *countryServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *stateServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, CountryService_Update_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, StateService_Update_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *countryServiceClient) Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *stateServiceClient) Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, CountryService_Delete_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, StateService_Delete_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// CountryServiceServer is the server API for CountryService service.
-// All implementations must embed UnimplementedCountryServiceServer
+// StateServiceServer is the server API for StateService service.
+// All implementations must embed UnimplementedStateServiceServer
 // for forward compatibility
-type CountryServiceServer interface {
+type StateServiceServer interface {
 	GetByID(context.Context, *GetByIDRequest) (*GetByIDResponse, error)
 	GetAll(context.Context, *emptypb.Empty) (*GetAllResponse, error)
 	Create(context.Context, *CreateRequest) (*emptypb.Empty, error)
 	Update(context.Context, *UpdateRequest) (*emptypb.Empty, error)
 	Delete(context.Context, *DeleteRequest) (*emptypb.Empty, error)
-	mustEmbedUnimplementedCountryServiceServer()
+	mustEmbedUnimplementedStateServiceServer()
 }
 
-// UnimplementedCountryServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedCountryServiceServer struct {
+// UnimplementedStateServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedStateServiceServer struct {
 }
 
-func (UnimplementedCountryServiceServer) GetByID(context.Context, *GetByIDRequest) (*GetByIDResponse, error) {
+func (UnimplementedStateServiceServer) GetByID(context.Context, *GetByIDRequest) (*GetByIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByID not implemented")
 }
-func (UnimplementedCountryServiceServer) GetAll(context.Context, *emptypb.Empty) (*GetAllResponse, error) {
+func (UnimplementedStateServiceServer) GetAll(context.Context, *emptypb.Empty) (*GetAllResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
 }
-func (UnimplementedCountryServiceServer) Create(context.Context, *CreateRequest) (*emptypb.Empty, error) {
+func (UnimplementedStateServiceServer) Create(context.Context, *CreateRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedCountryServiceServer) Update(context.Context, *UpdateRequest) (*emptypb.Empty, error) {
+func (UnimplementedStateServiceServer) Update(context.Context, *UpdateRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (UnimplementedCountryServiceServer) Delete(context.Context, *DeleteRequest) (*emptypb.Empty, error) {
+func (UnimplementedStateServiceServer) Delete(context.Context, *DeleteRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
-func (UnimplementedCountryServiceServer) mustEmbedUnimplementedCountryServiceServer() {}
+func (UnimplementedStateServiceServer) mustEmbedUnimplementedStateServiceServer() {}
 
-// UnsafeCountryServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to CountryServiceServer will
+// UnsafeStateServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to StateServiceServer will
 // result in compilation errors.
-type UnsafeCountryServiceServer interface {
-	mustEmbedUnimplementedCountryServiceServer()
+type UnsafeStateServiceServer interface {
+	mustEmbedUnimplementedStateServiceServer()
 }
 
-func RegisterCountryServiceServer(s grpc.ServiceRegistrar, srv CountryServiceServer) {
-	s.RegisterService(&CountryService_ServiceDesc, srv)
+func RegisterStateServiceServer(s grpc.ServiceRegistrar, srv StateServiceServer) {
+	s.RegisterService(&StateService_ServiceDesc, srv)
 }
 
-func _CountryService_GetByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StateService_GetByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetByIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CountryServiceServer).GetByID(ctx, in)
+		return srv.(StateServiceServer).GetByID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CountryService_GetByID_FullMethodName,
+		FullMethod: StateService_GetByID_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CountryServiceServer).GetByID(ctx, req.(*GetByIDRequest))
+		return srv.(StateServiceServer).GetByID(ctx, req.(*GetByIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CountryService_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StateService_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CountryServiceServer).GetAll(ctx, in)
+		return srv.(StateServiceServer).GetAll(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CountryService_GetAll_FullMethodName,
+		FullMethod: StateService_GetAll_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CountryServiceServer).GetAll(ctx, req.(*emptypb.Empty))
+		return srv.(StateServiceServer).GetAll(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CountryService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StateService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CountryServiceServer).Create(ctx, in)
+		return srv.(StateServiceServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CountryService_Create_FullMethodName,
+		FullMethod: StateService_Create_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CountryServiceServer).Create(ctx, req.(*CreateRequest))
+		return srv.(StateServiceServer).Create(ctx, req.(*CreateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CountryService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StateService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CountryServiceServer).Update(ctx, in)
+		return srv.(StateServiceServer).Update(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CountryService_Update_FullMethodName,
+		FullMethod: StateService_Update_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CountryServiceServer).Update(ctx, req.(*UpdateRequest))
+		return srv.(StateServiceServer).Update(ctx, req.(*UpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CountryService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StateService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CountryServiceServer).Delete(ctx, in)
+		return srv.(StateServiceServer).Delete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CountryService_Delete_FullMethodName,
+		FullMethod: StateService_Delete_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CountryServiceServer).Delete(ctx, req.(*DeleteRequest))
+		return srv.(StateServiceServer).Delete(ctx, req.(*DeleteRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// CountryService_ServiceDesc is the grpc.ServiceDesc for CountryService service.
+// StateService_ServiceDesc is the grpc.ServiceDesc for StateService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var CountryService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "core.state.v1.CountryService",
-	HandlerType: (*CountryServiceServer)(nil),
+var StateService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "core.state.v1.StateService",
+	HandlerType: (*StateServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetByID",
-			Handler:    _CountryService_GetByID_Handler,
+			Handler:    _StateService_GetByID_Handler,
 		},
 		{
 			MethodName: "GetAll",
-			Handler:    _CountryService_GetAll_Handler,
+			Handler:    _StateService_GetAll_Handler,
 		},
 		{
 			MethodName: "Create",
-			Handler:    _CountryService_Create_Handler,
+			Handler:    _StateService_Create_Handler,
 		},
 		{
 			MethodName: "Update",
-			Handler:    _CountryService_Update_Handler,
+			Handler:    _StateService_Update_Handler,
 		},
 		{
 			MethodName: "Delete",
-			Handler:    _CountryService_Delete_Handler,
+			Handler:    _StateService_Delete_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
